@@ -81,8 +81,8 @@ color: #fff;
 .input-container{
 display: flex;
 justify-content: center;
-padding-top: 40px;
-padding-bottom: 20px;
+padding-top: 60px;
+padding-bottom: 60px;
 }
 
 
@@ -96,8 +96,6 @@ padding-bottom: 20px;
     border-bottom: 1px solid #FFFFFF;
     padding: 10px;
     width: 100%;
-    margin-top: 40px;
-    margin-bottom: 40px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -118,24 +116,15 @@ padding-bottom: 20px;
     
 
 
-.btn-controls {
+.nav-btn{
 display: flex;
 justify-content: center;
 padding-top: 40px;
 padding-bottom: 20px;
 }
 
-.active-btn {
-    border:none;
-    color: #fff;
-    padding:15px;
-    margin-right: 15px;
-    width: 130px;
-    border-radius: 4px;
-    background:#FF6B08;
-}
 
-.disactive-btn {
+.btn-controls {
     border: 1px solid #FFFFFF;
     color: #fff;
     padding: 15px;
@@ -143,4 +132,13 @@ padding-bottom: 20px;
     width: 130px;
     border-radius: 4px;
     background: transparent;
+}
+
+.active-btn {
+    border:none;
+    background:#FF6B08;
+}
+
+.is-hidden {
+    display: none;
 }
