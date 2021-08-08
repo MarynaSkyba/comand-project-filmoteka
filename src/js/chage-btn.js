@@ -1,6 +1,16 @@
-
+import Notiflix from 'notiflix';
 import getRefs from './refs';
 const refs = getRefs();
+
+refs.libraryBtn.addEventListener('click', addGallery)
+
+
+function addGallery(){
+    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+
+    refs.container.innerHTML = '';
+    // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+}
 
 refs.libraryBtn.addEventListener('click', changeHeaderLibraryBtn)
 
@@ -9,6 +19,7 @@ function changeHeaderLibraryBtn(){
     refs.menuBtn.classList.remove('is-hidden');
     refs.libraryBtn.classList.add('current');
     refs.homeBtn.classList.remove('current');
+    document.getElementById('the_body').style.backgroundImage = "url(../images/library-bg@2x.jpg)";
 }
 
 refs.homeBtn.addEventListener('click', changeHeaderHomeBtn)

@@ -69,8 +69,7 @@ function clearGallery() {
      refs.gallery.innerHTML = '';
 }
 
-const refs = getRefs();
-const queryService = new QueryService();
+
 
 queryService.fetchDate().then((response) => {
     console.log(response);
@@ -86,3 +85,7 @@ queryService.fetchDate().then((response) => {
 
 
 changeBtn();
+
+
+
+
