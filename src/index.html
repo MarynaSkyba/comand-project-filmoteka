@@ -6,17 +6,47 @@
     <title>Заголовок страницы</title>
   </head>
   <body>
+    <header class="page-header">
+      <div class="container">
+         <div class="main-nav">
+           <a href="./index.html" lang="en" class="logo">
+          <svg
+          class="menu__icon" 
+          width="40" 
+          height="40" 
+          
+          aria-label="Главное меню">
+        
+          <use class="icon-menu" href="./images/icon.svg#icon-film-1"></use>
+       </svg>
+          Filmoteka</a>
+        <input type="text" placeholder="Поиск фильмов">
+      <svg
+          class="menu__icon" 
+          width="40" 
+          height="40" 
+          
+          aria-label="Главное меню">
+
+          <use class="icon-menu" href="./images/icon.svg#icon-search-2"></use>
+       </svg>
+
+      <ul class="site-nav"  data-menu id="menu-container">
+          <li class="site-nav__item"><button class="home_btn" href="./index.html">Home</button></li>
+          <li class="site-nav__item"><button class="library_btn">My library</button></li> 
+          
+      </ul>
+      </div>
+      <button class="watched_btn">WATCHED</button>
+      <button class="queue_btn">QUEUE</button>
+      </div>
+      </header>
 
 
-  <div class="film-gallery"></div>
 
-   
+  
+    <div class="film-gallery"></div>
 
-
-    <button class="library_btn">LIBRARY</button>
-
-    <button class="watched_btn">WATCHED</button>
-    <button class="queue_btn">QUEUE</button>
 
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <include src="./partials/example.html"></include>
