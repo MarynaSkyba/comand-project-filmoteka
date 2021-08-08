@@ -10,19 +10,20 @@ import pagination from './js/pagination'
 import Notiflix from 'notiflix';
 import changeBtn from './js/chage-btn';
 
-changeBtn();
 
 const refs = getRefs();
 const queryService = new QueryService();
 
 queryService.fetchDate().then((response) => {
     console.log(response);
-     renderMoveGallery(response.results);
+    renderMoveGallery(response.results);
  });
-    
+ 
  
  function renderMoveGallery(data) {
-    refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+     refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+     
+    }
 
-}
 
+changeBtn();
