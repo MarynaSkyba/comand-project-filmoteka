@@ -1,4 +1,6 @@
 import './sass/main.scss';
+import './library';
+import './watch-queue';
 import templateCard from './template/tmp-card.hbs';
 import getRefs from './js/refs';
 import QueryService from './js/query-service.js';
@@ -15,4 +17,10 @@ queryService.fetchDate().then((response) => {
     refs.container.insertAdjacentHTML('beforeend', templateCard(data));
 
 }
+
+
+
+
+
+
 
