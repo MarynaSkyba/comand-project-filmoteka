@@ -7,6 +7,8 @@ import QueryService from './js/query-service.js';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import Notiflix from 'notiflix';
+import changeBtn from './js/chage-btn';
+
 const refs = getRefs();
 const queryService = new QueryService();
 const options = {
@@ -47,9 +49,13 @@ pagination.on('afterMove', (event) => {
 });
 
 
+
+
+
  function renderMoveGallery(data) {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
 }
+
 
 function query(page) {
     queryService.fetchDate(page).then((response) => {
@@ -63,4 +69,20 @@ function clearGallery() {
      refs.gallery.innerHTML = '';
 }
 
+const refs = getRefs();
+const queryService = new QueryService();
 
+queryService.fetchDate().then((response) => {
+    console.log(response);
+    renderMoveGallery(response.results);
+ });
+ 
+ 
+ function renderMoveGallery(data) {
+     refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+     
+    }
+
+
+
+changeBtn();
