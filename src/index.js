@@ -27,3 +27,13 @@ queryService.fetchDate().then((response) => {
 
 
 changeBtn();
+
+refs.libraryBtn.addEventListener('click', addGallery)
+
+
+function addGallery(){
+    Notiflix.Notify.failure('Sorry, there are no film matching your search query. Please try again.');
+
+    refs.container.innerHTML = '';
+    // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+}
