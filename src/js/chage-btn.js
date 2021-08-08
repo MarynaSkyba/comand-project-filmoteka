@@ -19,7 +19,7 @@ function changeHeaderLibraryBtn(){
     refs.menuBtn.classList.remove('is-hidden');
     refs.libraryBtn.classList.add('current');
     refs.homeBtn.classList.remove('current');
-    document.getElementById('the_body').style.backgroundImage = "url(../images/library-bg@2x.jpg)";
+    document.getElementById('the_body').style.backgroundImage = "url('https://cs7.pikabu.ru/post_img/big/2018/06/05/7/15281978511730308.jpg')";
 }
 
 refs.homeBtn.addEventListener('click', changeHeaderHomeBtn)
