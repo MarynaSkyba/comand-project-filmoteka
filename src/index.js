@@ -1,6 +1,6 @@
 import './sass/main.scss';
-import './js/library';
-import './js/watch-queue';
+import './library';
+import './watch-queue';
 import templateCard from './template/tmp-card.hbs';
 import getRefs from './js/refs';
 import QueryService from './js/query-service.js';
