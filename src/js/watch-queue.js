@@ -1,15 +1,17 @@
 import Notiflix from 'notiflix';
 import getRefs from './refs';
+const refs = getRefs();
 
-// gallery : document.querySelector('.gallery'),
 
-//     container : document.querySelector('.film-gallery'),
-//     watchedBtn: document.getElementById('watched_btn'),
-//     queueBtn: document.getElementById('queue_btn'),
+//1. add to buttons
 
-//     homeBtn: document.querySelector('.home_btn'),
-//     libraryBtn: document.querySelector('.library_btn'),
-//     input: document.querySelector('.input'),
 
-//     menuBtn: document.querySelector('.nav-btn'),
-//     menuInput: document.querySelector('.input-container')
+
+// 2.render watchedBTN
+// refs.watchedBtn.addEventListener('click', renderButtonsMarkup)
+// refs.queueBtn.addEventListener('click', renderButtonsMarkup)
+
+// function renderButtonsMarkup() {
+    
+        
+// }
