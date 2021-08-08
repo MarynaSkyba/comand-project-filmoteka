@@ -1,0 +1,15 @@
+{{#each this}}
+<div class="photo-card">
+    
+        <div class="thumb"><img src="https://www.themoviedb.org/t/p/w300{{poster_path}}" loading="lazy"/></div>
+        <div class="info">
+            <p class="title">
+                {{title}}
+            </p>
+            <p class="info-item">
+               {{vote_average}}
+            </p>
+        </div>
+    
+</div>
+{{/each}}
