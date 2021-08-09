@@ -1,7 +1,5 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
-import cards from '../template/tmp-card.hbs'
-const modalDiv = document.getElementById('modal');
-const pictureDiva=document.querySelector('.photo-card"')
+
 
   //  отрисовка модального окна 
 export default function renderMovieModal(data) {
