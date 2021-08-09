@@ -1,0 +1,153 @@
+a {
+text-decoration: none;
+}
+
+.page-header{
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: rgba(0, 0, 0, 0.56);
+    background-image: url(../images/home-bg@2x.jpg);
+}
+.main-nav {
+    display: flex;
+    padding-top: 20px;    
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: baseline;
+    
+}
+
+.logo-text {
+margin-left: 40px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 35px;
+color: #fff;
+
+@media screen and (max-width: 767px) {
+    display: none;
+}
+
+}
+
+
+.icon-film{
+    position: absolute;
+    content: "";
+    top: 15%;
+    left: 0;
+    margin-right: 10px;
+   
+}
+
+
+.site-nav{
+    display: flex;
+    align-items: center;
+    
+}
+
+.site-nav__btn {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color:#FFFFFF;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    margin-left: 40px;
+    border: none;
+    text-transform: uppercase;
+    
+}
+
+
+.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  width: 100%;
+  display: block;
+  background-color: #FF6B08;
+  height: 3px;
+  border-radius: 1px;
+}
+
+.input-container{
+display: flex;
+justify-content: center;
+padding-top: 60px;
+padding-bottom: 60px;
+}
+
+
+.form-field{
+    position: relative;
+    width: 300px;
+    
+}
+.input{
+    color: #fff;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 10px;
+    width: 100%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+}
+
+.input::placeholder {
+    color: #fff;
+    margin:0;
+    padding: 0;
+}
+.icon-search {
+    position: absolute;
+    right: 0;
+    top: 25%;
+    content: "";
+}
+    
+
+
+.nav-btn{
+display: flex;
+justify-content: center;
+padding-top: 60px;
+padding-bottom: 50px;
+}
+
+
+.btn-controls {
+    border: 1px solid #FFFFFF;
+    color: #fff;
+    padding: 15px;
+    margin-right: 15px;
+    width: 130px;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.active-btn {
+    border:none;
+    background:#FF6B08;
+}
+
+.is-hidden {
+    display: none;
+}
