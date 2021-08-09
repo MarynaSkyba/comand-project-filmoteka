@@ -4,12 +4,13 @@ text-decoration: none;
 
 .page-header{
     max-width: 1600px;
+    height: 230px;
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background: rgba(0, 0, 0, 0.56);
-    background-image: url(../images/home-bg@2x.jpg);
+    background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/home-bg1024@2x.jpg);
 }
 .main-nav {
     display: flex;
