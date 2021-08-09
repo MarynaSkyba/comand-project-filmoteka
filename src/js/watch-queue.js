@@ -1,15 +1,33 @@
 import Notiflix from 'notiflix';
 import getRefs from './refs';
+import QueryService from './query-service';
+const refs = getRefs();
+// const queryServiceById = new QueryService()
 
-// gallery : document.querySelector('.gallery'),
+// // 1. empty[]
+// let watchedMovie = [];
+// let queueMovie = [];
 
-//     container : document.querySelector('.film-gallery'),
-//     watchedBtn: document.getElementById('watched_btn'),
-//     queueBtn: document.getElementById('queue_btn'),
+// refs.watchedBtnModal.addEventListener('click', addWatchedMovie)
 
-//     homeBtn: document.querySelector('.home_btn'),
-//     libraryBtn: document.querySelector('.library_btn'),
-//     input: document.querySelector('.input'),
+// function addWatchedMovie {
 
-//     menuBtn: document.querySelector('.nav-btn'),
-//     menuInput: document.querySelector('.input-container')
+// }
+
+
+// 2. find id movie
+// 3.fetch id on api
+
+
+//1. add to buttons
+
+
+
+// 2.render watchedBTN(onPage)
+// refs.watchedBtn.addEventListener('click', renderButtonsMarkup)
+// refs.queueBtn.addEventListener('click', renderButtonsMarkup)
+
+// function renderButtonsMarkup() {
+    
+        
+// }
