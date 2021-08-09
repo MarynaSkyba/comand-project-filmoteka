@@ -18,7 +18,7 @@ export default class QueryService{
     };    
    
 
-
+ }
 
 
 //  fetchSearch() {
@@ -52,4 +52,4 @@ export default class QueryService{
 //     }
 
 
-    }
+   

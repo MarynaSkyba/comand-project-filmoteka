@@ -1,5 +1,5 @@
 import './sass/main.scss';
-// import './js/inputSearch'
+// import './js/inputSearch';
 import './js/watch-queue';
 import templateCard from './template/tmp-card.hbs';
 import getRefs from './js/refs';
