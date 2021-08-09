@@ -1,7 +1,7 @@
 import './sass/main.scss';
 
 import './js/watch-queue';
-import './js/modal'
+import './js/modal-closing'
 
 import templateCard from './template/tmp-card.hbs';
 import getRefs from './js/refs';
