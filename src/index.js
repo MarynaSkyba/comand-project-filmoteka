@@ -35,32 +35,40 @@ const options = {
     }
 };
 const pagination = new Pagination('#tui-pagination-container', options);
-const Page = pagination.getCurrentPage();
-query(Page);
+const page = pagination.getCurrentPage();
+
+queryService.fetchDate(page).then(response => {
+    console.log(response);
+    pagination.reset(response.total_pages);
+     renderMoveGallery(response.results);
+ });
 
 pagination.on('afterMove', (event) => {
-    console.log(event)
     const currentPage = event.page;
-    clearGallery();
-    console.log(currentPage);
-    query(currentPage);
+    refs.gallery.innerHTML = '';
+    queryService.fetchDate(currentPage).then(response => {
+        renderMoveGallery(response.results);
+    } )
 });
-
 
  function renderMoveGallery(data) {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
 }
 
-function query(page) {
-    queryService.fetchDate(page).then((response) => {
-    pagination.reset(response.total_pages);
-     renderMoveGallery(response.results);
- });
-}
+// queryService.fetchSearch(e).then(response => {
+//         renderMoveGallery(response.results);
+//     } )
+
+// function query(page) {
+//     queryService.fetchDate(page).then((response) => {
+//     pagination.reset(response.total_pages);
+//      renderMoveGallery(response.results);
+//  });
+// }
 
 
-function clearGallery() {
-     refs.gallery.innerHTML = '';
-}
+// function clearGallery() {
+//      refs.gallery.innerHTML = '';
+// }
 
 
