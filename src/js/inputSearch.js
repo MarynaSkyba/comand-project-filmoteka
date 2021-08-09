@@ -105,3 +105,42 @@
 // }
 
 
+
+
+
+
+
+
+
+
+
+
+//  fetchSearch() {
+//     const url = `${BASE_URL}/search/movie?api_key=${KEY_USER}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+//     return fetch(url)
+//       .then(response => response.json())
+//       .then(({ results }) => {
+//         return this.fetchFilmGenre().then(genres => {
+//           return results.map(result => ({
+//             ...result,
+//             release_date: result.release_date
+//               ? result.release_date.slice(0, 4)
+//               : result.release_date,
+//               genres,
+//           }));
+//         });
+//       });
+//   }
+
+
+
+
+
+//  fetchFilmGenre() {
+//     const url = `${BASE_URL}/genre/movie/list?api_key=${KEY_USER}&language=en-US`;
+//     return fetch(url)
+//       .then(response => response.json())
+//       .then(({ genres }) => {
+//         return genres;
+//       });
+//     }
