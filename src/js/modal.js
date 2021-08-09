@@ -1,7 +1,7 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
 
 
-  //  отрисовка модального окна 
+  //  отрисовка модального окна Настя можешь взять эту а можешь заливать через шаблон напрямую
 export default function renderMovieModal(data) {
   
     const modalMarkup = modalTemplate(data);
