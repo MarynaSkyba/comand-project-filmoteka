@@ -1,19 +1,19 @@
-import moviesCard from '../template/tmp-card.hbs';
-import QueryService from  './query-service';
-import getRefs from './refs';
-import Notiflix from "notiflix";
-import debounce from 'lodash.debounce';
+// import moviesCard from '../template/tmp-card.hbs';
+// import QueryService from  './query-service';
+// import getRefs from './refs';
+// import Notiflix from "notiflix";
+// import debounce from 'lodash.debounce';
 
 
 
 // const debounce = require('lodash.debounce')
-const DEBOUNCE_DELAY = 300;
-const refs = getRefs();
+// const DEBOUNCE_DELAY = 300;
+// const refs = getRefs();
 
-const filmsApiService = new QueryService();
+// const filmsApiService = new QueryService();
 
 
-refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
+// refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 
 // function onSearch(e) {
@@ -55,53 +55,53 @@ refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 
 
-function onSearch(e) {
-    e.preventDefault()
-    const page = refs.input.value;
-    refs.gallery.innerHTML = '';
-    const searchQuery = e.target.value;
+// function onSearch(e) {
+//     e.preventDefault()
+//     const page = refs.input.value;
+//     refs.gallery.innerHTML = '';
+//     const searchQuery = e.target.value;
 
     
-    if(searchQuery.trim() !== '') {
+//     if(searchQuery.trim() !== '') {
     
-        filmsApiService.fetchDate(page)
-            .then(renderMovieCard)
-            .catch(error => console.log(error))
+//         filmsApiService.fetchDate(page)
+//             .then(renderMovieCard)
+//             .catch(error => console.log(error))
     
-    }
-}
+//     }
+// }
 
 
 
 
-function renderMovieCard(name) {
-    if (name.length === 1) {
-        const markup = name[0];
-        refs.gallery.insertAdjacentHTML('beforeend', moviesCard(markup));
+// function renderMovieCard(name) {
+//     if (name.length === 1) {
+//         const markup = name[0];
+//         refs.gallery.insertAdjacentHTML('beforeend', moviesCard(markup));
 
-    } else if (name.length > 10) {
-        getInfoMessage('Too many matches found. Please enter a more specific name.');
+//     } else if (name.length > 10) {
+//         getInfoMessage('Too many matches found. Please enter a more specific name.');
 
-    } else if (name.status === 404) {
-        getErrorMessage('Oops, there is no movie with that name');
+//     } else if (name.status === 404) {
+//         getErrorMessage('Oops, there is no movie with that name');
 
     
 
-    } else {
-        refs.gallery.innerHTML = moviesCard(name);
-    }
-        }
+//     } else {
+//         refs.gallery.innerHTML = moviesCard(name);
+//     }
+//         }
 
 
 
 
 
-function getInfoMessage(message) {
-    Notiflix.Notify.info(message);
-}
+// function getInfoMessage(message) {
+//     Notiflix.Notify.info(message);
+// }
 
-function getErrorMessage(message) {
-    Notiflix.Notify.failure(message);
-}
+// function getErrorMessage(message) {
+//     Notiflix.Notify.failure(message);
+// }
 
 
