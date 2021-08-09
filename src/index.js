@@ -50,7 +50,9 @@ queryService.fetchDate(page).then(response => {
 
 pagination.on('afterMove', (event) => {
     const currentPage = event.page;
-    clearGallery();
+
+    refs.gallery.innerHTML = '';
+
     queryService.fetchDate(currentPage).then(response => {
         renderMoveGallery(response.results);
     } )
@@ -60,9 +62,22 @@ pagination.on('afterMove', (event) => {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
 }
 
-function clearGallery() {
-     refs.gallery.innerHTML = '';
-}
+
+// queryService.fetchSearch(e).then(response => {
+//         renderMoveGallery(response.results);
+//     } )
+
+// function query(page) {
+//     queryService.fetchDate(page).then((response) => {
+//     pagination.reset(response.total_pages);
+//      renderMoveGallery(response.results);
+//  });
+// }
+
+
+// function clearGallery() {
+//      refs.gallery.innerHTML = '';
+// }
 
 
 
