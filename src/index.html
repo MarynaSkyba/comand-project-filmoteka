@@ -10,7 +10,7 @@
     integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
   </head>
   <body>
-    <header class="page-header">
+    <header class="page-header" id="the_body">
       <div class="container">
          <div class="main-nav">
            <a href="./index.html" lang="en" class="logo">
@@ -24,7 +24,7 @@
           <use class="icon-menu" href="./images/icon.svg#icon-film-1"></use>
        </svg> <span class="logo-text">Filmoteka</span></a>
        <div class="site-nav"  data-menu id="menu-container">
-           <button class="site-nav__btn home_btn current" href="./index.html">Home</button>
+        <a href="./index.html" lang="en"><button class="site-nav__btn home_btn current" href="./index.html">Home</button></a>
            <button class="site-nav__btn library_btn">My library</button>
            
        </div>
@@ -49,6 +49,14 @@
       </div>
       </div>
       </header>
+
+
+
+    <div class="film-gallery"></div>
+<!-- Модалки -->
+<div id="modal" class="modal">
+ 
+</div>
 
 
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->

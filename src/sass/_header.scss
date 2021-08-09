@@ -3,12 +3,13 @@ text-decoration: none;
 }
 
 .page-header{
+    max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background: rgba(0, 0, 0, 0.56);
-    background-image: url(../images/Rectangle2@2x.jpg);
+    background-image: url(../images/home-bg@2x.jpg);
 }
 .main-nav {
     display: flex;
@@ -34,6 +35,10 @@ font-size: 30px;
 line-height: 35px;
 color: #fff;
 
+@media screen and (max-width: 767px) {
+    display: none;
+}
+
 }
 
 
@@ -54,10 +59,14 @@ color: #fff;
 }
 
 .site-nav__btn {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
     color:#FFFFFF;
     position: relative;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: transparent;
     margin-left: 40px;
     border: none;
@@ -110,7 +119,7 @@ padding-bottom: 60px;
 .icon-search {
     position: absolute;
     right: 0;
-    top: 42%;
+    top: 25%;
     content: "";
 }
     
@@ -119,8 +128,8 @@ padding-bottom: 60px;
 .nav-btn{
 display: flex;
 justify-content: center;
-padding-top: 40px;
-padding-bottom: 20px;
+padding-top: 60px;
+padding-bottom: 50px;
 }
 
 
