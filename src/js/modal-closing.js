@@ -23,8 +23,8 @@ cardFilm.addEventListener('click', openModal);
       
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
-    errorModal();
-    console.error('Uuups something go wrong' + error);
+    
+    console.log('Uuups something go wrong');
   }
 
 }
