@@ -16,7 +16,7 @@ const options = {
     itemsPerPage: 20,
     visiblePages: 5,
     page: 1,
-    centerAlign: false,
+    centerAlign: true,
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
     template: {
@@ -36,34 +36,27 @@ const options = {
             '</a>'
     }
 };
+
 const pagination = new Pagination('#tui-pagination-container', options);
-const Page = pagination.getCurrentPage();
-query(Page);
+const page = pagination.getCurrentPage();
+
+queryService.fetchDate(page).then(response => {
+    console.log(response);
+    pagination.reset(response.total_pages);
+     renderMoveGallery(response.results);
+ });
 
 pagination.on('afterMove', (event) => {
-    console.log(event)
     const currentPage = event.page;
     clearGallery();
-    console.log(currentPage);
-    query(currentPage);
+    queryService.fetchDate(currentPage).then(response => {
+        renderMoveGallery(response.results);
+    } )
 });
-
-
-
-
 
  function renderMoveGallery(data) {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
 }
-
-
-function query(page) {
-    queryService.fetchDate(page).then((response) => {
-    pagination.reset(response.total_pages);
-     renderMoveGallery(response.results);
- });
-}
-
 
 function clearGallery() {
      refs.gallery.innerHTML = '';
@@ -71,20 +64,43 @@ function clearGallery() {
 
 
 
-queryService.fetchDate().then((response) => {
-    console.log(response);
-    renderMoveGallery(response.results);
- });
- 
- 
- function renderMoveGallery(data) {
-     refs.container.insertAdjacentHTML('beforeend', templateCard(data));
-     
-    }
+// const pagination = new Pagination('#tui-pagination-container', options);
+// const Page = pagination.getCurrentPage();
+// query(Page);
+
+// pagination.on('afterMove', (event) => {
+//     console.log(event)
+//     const currentPage = event.page;
+//     clearGallery();
+//     console.log(currentPage);
+//     query(currentPage);
+// });
 
 
 
-changeBtn();
+
+
+//  function renderMoveGallery(data) {
+//     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
+// }
+
+
+// function query(page) {
+//     queryService.fetchDate(page).then((response) => {
+//     pagination.reset(response.total_pages);
+//      renderMoveGallery(response.results);
+//  });
+// }
+
+
+// function clearGallery() {
+//      refs.gallery.innerHTML = '';
+// }
+
+
+
+
+// changeBtn();
 
 
 
