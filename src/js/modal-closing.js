@@ -1,14 +1,11 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
-
-const modalDiv = document.getElementById('modal');
-
-
+const modalDiv=document.getElementById('modal')
 const cardFilm = document.querySelector('.gallery');
 
 cardFilm.addEventListener('click', openModal);
 
 
-  //  отрисовка модального окна  
+  //  отрисовка модального окна Настя можешь взять эту а можешь заливать через шаблон напрямую-тогда я немного сменню логику закрытия
   export default function renderMovieModal(data) {
   
     const modalMarkup = modalTemplate(data);
@@ -26,9 +23,8 @@ cardFilm.addEventListener('click', openModal);
       
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
-    
-    console.log('Uuups something go wrong');
-
+   // errorModal();
+    console.error('Uuups something go wrong' + error);
   }
 
 }
@@ -47,18 +43,13 @@ function modalClosinByEsc(event) {
 }
 // Открытие м.о
 
-
-  //function openModal(event) {
-   //event.preventDefault();
-   //let data = evt.target.dataset.action;
-   // if (event.target.nodeName !== 'IMG') {
-     
-    //return
-   // }
-    //renderMovieModal(data);
-  //}
-
-
-
+ function openModal(event) {
+  event.preventDefault();
+  let data = event.target.dataset.action;
+ if (event.target.nodeName !== 'IMG') {
+    return
+   }
+   renderMovieModal(data);
+ }
 
 
