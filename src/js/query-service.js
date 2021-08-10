@@ -25,6 +25,12 @@ async fetchSearch(query) {
      const response = await axios.get(url);
      return response.data;
     }
+//Aleksandra: napisala kod nije dla paginacii tekus4ego poiska na stanicah
+    async fetchSearchTest(page,query) {
+    const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}&page=${page}`;
+     const response = await axios.get(url);
+     return response.data;
+    }
 
     // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
 
