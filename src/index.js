@@ -2,7 +2,7 @@ import './js/pagination';
 import './sass/main.scss';
 import './js/watch-queue';
 import './js/modal-closing';
-
+import './js/input';
 
 import templateCard from './template/tmp-card.hbs';
 import getRefs from './js/refs';
