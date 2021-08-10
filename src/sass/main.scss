@@ -6,11 +6,10 @@
 // Стили для файла с примером HTML-фрагмента
 // @import './example';
 
-
 .menu__icon {
-    color:aqua;
-    fill: black;
-    border: 1 px solid red;
+  color: aqua;
+  fill: black;
+  border: 1 px solid red;
 }
 
 @import './example';
@@ -19,5 +18,5 @@
 @import './gallery';
 @import './pagination';
 @import './header';
+@import './modal';
 @import './footer';
-
