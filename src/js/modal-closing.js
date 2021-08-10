@@ -1,6 +1,7 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
 const modalDiv=document.getElementById('modal')
 const cardFilm = document.querySelector('.gallery');
+const modalApiFetch = new QueryService();
 
 cardFilm.addEventListener('click', openModal);
 
@@ -41,15 +42,27 @@ function modalClosinByEsc(event) {
     modalClosing();
   }
 }
+//ID(ALeksandra-test)
+// function getMovieId(id) {
+  
+// }
+
 // Открытие м.о
 
  function openModal(event) {
   event.preventDefault();
-  let data = event.target.dataset.action;
+   let data = event.target.nodeName;
+   console.log(data)
  if (event.target.nodeName !== 'IMG') {
     return
    }
    renderMovieModal(data);
- }
+}
+
+
+ 
+// modalApiFetch.fetchSearchTest(currentPage, query).then(response => {
+//         renderMovieCards(response.results);
+//     } )
 
 

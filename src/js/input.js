@@ -59,7 +59,6 @@ function renderMovieCards(name) {
 function onSearch(e) {
   const query = e.target.value
   if (query === '' || query.trim()==='') {
-    console.log(query)
     Notiflix.Notify.failure('Oops, there is no movie with that name');
     return
   }
