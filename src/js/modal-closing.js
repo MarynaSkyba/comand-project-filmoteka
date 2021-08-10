@@ -1,5 +1,7 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
+
 const modalDiv = document.getElementById('modal');
+
 
 const cardFilm = document.querySelector('.gallery');
 
@@ -26,6 +28,7 @@ cardFilm.addEventListener('click', openModal);
   } catch (error) {
   
     console.log('Uuups something go wrong'+ error);
+
   }
 
 }
@@ -44,6 +47,7 @@ function modalClosinByEsc(event) {
 }
 // Открытие м.о
 
+
   //function openModal(event) {
    //event.preventDefault();
    //let data = evt.target.dataset.action;
@@ -53,6 +57,8 @@ function modalClosinByEsc(event) {
    // }
     //renderMovieModal(data);
   //}
+
+
 
 
 
