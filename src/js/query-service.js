@@ -18,8 +18,20 @@ export default class QueryService{
     };    
    
 
- }
 
+async fetchSearch(query) {
+    const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}`;
+     const response = await axios.get(url);
+     return response.data;
+    }
+//Aleksandra: napisala kod nije dla paginacii tekus4ego poiska na stanicah
+    async fetchSearchTest(page,query) {
+    const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}&page=${page}`;
+     const response = await axios.get(url);
+     return response.data;
+    }
+
+ 
 
 
    
