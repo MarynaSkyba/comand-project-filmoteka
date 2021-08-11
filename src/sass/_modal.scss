@@ -31,15 +31,29 @@
   overflow-x: auto;
   position: relative;
   margin: auto;
-  background-color: white;
+  background-color: $white-color;
   font-family: Roboto;
 
   font-size: 14px;
   line-height: 1.14;
-  color: rgba(84, 84, 84, 1);
+  color: $footer-text-color;
   max-height: 100vh;
   width: 280px;
   padding: 48px 20px 41px 20px;
+
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    display: flex;
+    margin: auto;
+    width: 618px;
+    height: 562px;
+    padding: 42px 29px 40px 28px;
+  }
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    width: 882px;
+    height: 568px;
+    padding: 50px 30px 40px 30px;
+  }
 }
 
 .film__button__wrapper {
@@ -50,15 +64,15 @@
   height: 40px;
   text-align: center;
   border-radius: 5px;
-  background-color: white;
+  background-color: $white-color;
   cursor: pointer;
   border: 1px solid rgba(84, 84, 84, 1);
 
   &:hover,
   &:focus {
-    background-color: orange;
-    color: white;
-    border: 1px solid orange;
+    background-color: $accent-color;
+    color: $white-color;
+    border: 1px solid $accent-color;
   }
 }
 
@@ -86,4 +100,83 @@
   background-position: center;
   background-size: 60%;
   background-repeat: no-repeat;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+  }
+}
+
+.image {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+
+  max-width: 240px;
+  height: 350px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    max-width: 264px;
+    height: 373px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 396px;
+    height: 475px;
+  }
+}
+.film__image {
+  @media screen and (min-width: $tablet) {
+    margin-right: 30px;
+  }
+}
+
+.film__information {
+  text-align: start;
+}
+
+.film__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+
+.film__item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.film__details {
+  color: $footer-text-color;
+  min-width: 108px;
+}
+
+.film__info--uper {
+  text-transform: uppercase;
+  line-height: 1.17;
+}
+
+.film__rating--orange {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $white-color;
+  background-color: $accent-color;
+
+  border-radius: 5px;
+}
+.film__rating--divider {
+  margin-right: 3px;
+}
+
+.film__about__title {
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.film__about__text {
+  line-height: 1.67;
+  margin-bottom: 21px;
 }
