@@ -3,7 +3,8 @@ import templateCard from '../template/tmp-card.hbs';
 import QueryService from './query-service';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
+import '../../node_modules/spin.js/spin.css';
+import {target, spinner}  from './spinner.js'
 const refs = getRefs();
 const queryService = new QueryService();
 const options = {
@@ -34,18 +35,21 @@ const options = {
 
 const pagination = new Pagination('#tui-pagination-container', options);
 const page = pagination.getCurrentPage();
-
+spinner.spin(target);
 queryService.fetchDate(page).then(response => {
     console.log(response);
     pagination.reset(response.total_pages);
-     renderMoveGallery(response.results);
+    renderMoveGallery(response.results);
+    spinner.stop();
  });
 
 pagination.on('afterMove', (event) => {
+    spinner.spin(target);
     const currentPage = event.page;
     clearGallery();
     queryService.fetchDate(currentPage).then(response => {
         renderMoveGallery(response.results);
+        spinner.stop();
     } )
 });
 
