@@ -13,6 +13,7 @@ export default function getRefs() {
 
     menuBtn: document.querySelector('.nav-btn'),
         menuInput: document.querySelector('.input-container')
+
     
         // watchedBtnModal: document.querySelector('.btn_watch')
         // queueBtnModal: document.querySelector('btn_queue')
