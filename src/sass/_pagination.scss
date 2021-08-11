@@ -19,8 +19,6 @@
     height: 16px; 
     padding-bottom: 16px;      
 
-    font-family: Roboto;
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
@@ -37,24 +35,24 @@
     height: 40px;
     padding: 13px 13px 11px;
 
-    background-color: #FF6B08;
-    border-color: #FF6B08;
+    background-color: $accent-color;
+    border-color: $accent-color;
     border-radius: 5px;
     cursor: pointer;
     
 
     &:hover, 
     &:focus {
-        background-color: #FF6B08;
+        background-color: $accent-color;
     }
 }
 
 .tui-pagination .tui-first-child.tui-is-selected {
-    border-left: 1px solid #FF6B08;
+    border-left: 1px solid $accent-color;
 }
 
 .tui-pagination .tui-last-child.tui-is-selected {
-    border-right: 1px solid #FF6B08;
+    border-right: 1px solid $accent-color;
 }
 
 .tui-pagination .tui-ico-ellip {
