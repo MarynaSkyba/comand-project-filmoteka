@@ -24,7 +24,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $background-color;
 }
 
 .modal__container {
@@ -66,7 +66,7 @@
   border-radius: 5px;
   background-color: $white-color;
   cursor: pointer;
-  border: 1px solid rgba(84, 84, 84, 1);
+  border: 1px solid $footer-text-color;
 
   &:hover,
   &:focus {
@@ -93,7 +93,7 @@
   margin: 0;
   border: none;
   border-radius: 50%;
-  background-color: lightgrey;
+  background-color: $background-modal-color;
 
   cursor: pointer;
   background-image: url('../images/close-menu-Jul.svg');
