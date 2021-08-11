@@ -2,7 +2,7 @@ import modalTemplate from '../template/modal-card-about-film.hbs'
 
 const cardFilm = document.querySelector('.gallery');
 
-cardFilm.addEventListener('click', openModal);
+// cardFilm.addEventListener('click', openModal);
 
 
   //  отрисовка модального окна Настя можешь взять эту а можешь заливать через шаблон напрямую-тогда я немного сменню логику закрытия

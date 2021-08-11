@@ -43,10 +43,10 @@ queryService.fetchDate(page).then(response => {
 
 pagination.on('afterMove', (event) => {
     const currentPage = event.page;
-    clearGallery();
+    clearGallery();  
     queryService.fetchDate(currentPage).then(response => {
         renderMoveGallery(response.results);
-    } )
+    })    
 });
 
  function renderMoveGallery(data) {
@@ -56,3 +56,6 @@ pagination.on('afterMove', (event) => {
 function clearGallery() {
      refs.gallery.innerHTML = '';
 }
+
+// localStorage.setItem('present-page', currentPage);
+// const urlPage = localStorage.getItem('present-page');  
