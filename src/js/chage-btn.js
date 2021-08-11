@@ -8,7 +8,8 @@ refs.libraryBtn.addEventListener('click', addGallery)
 function addGallery(){
     Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
 
-    refs.container.innerHTML = '';
+    refs.gallery.innerHTML = '';
+    
     // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
 }
 
