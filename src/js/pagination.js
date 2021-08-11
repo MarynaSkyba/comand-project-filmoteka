@@ -46,11 +46,13 @@ queryService.fetchDate(page).then(response => {
 pagination.on('afterMove', (event) => {
     spinner.spin(target);
     const currentPage = event.page;
-    clearGallery();
+    clearGallery();  
     queryService.fetchDate(currentPage).then(response => {
         renderMoveGallery(response.results);
+
         spinner.stop();
     } )
+
 });
 
  function renderMoveGallery(data) {
@@ -60,3 +62,9 @@ pagination.on('afterMove', (event) => {
 function clearGallery() {
      refs.gallery.innerHTML = '';
 }
+//<<<<<<< feature/pagination-4
+
+// localStorage.setItem('present-page', currentPage);
+// const urlPage = localStorage.getItem('present-page');  
+//=======
+//>>>>>>> main

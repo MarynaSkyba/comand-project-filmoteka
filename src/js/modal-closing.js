@@ -4,7 +4,7 @@ const cardFilm = document.querySelector('.gallery');
 import QueryService from  './query-service';
 const modalApiFetch = new QueryService();
 
-cardFilm.addEventListener('click', openModal);
+// cardFilm.addEventListener('click', openModal);
 
 
   //  отрисовка модального окна Настя можешь взять эту а можешь заливать через шаблон напрямую-тогда я немного сменню логику закрытия
