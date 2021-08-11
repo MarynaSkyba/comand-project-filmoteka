@@ -105,6 +105,12 @@
   &:focus {
     background-color: $accent-color;
   }
+
+  @media screen and (max-width: $tablet) {
+    width: 30px;
+    height: 30px;
+    top: 1.3%;
+  }
 }
 
 .image {
