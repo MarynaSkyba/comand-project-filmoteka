@@ -4,9 +4,6 @@ import getRefs from './refs';
 import Notiflix from "notiflix";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import paginat from './pagination'
-
-
 
 
 const debounce = require('lodash.debounce')
@@ -58,8 +55,10 @@ function renderMovieCards(name) {
 
 function onSearch(e) {
   const query = e.target.value
-  if (query === '' || query.trim()==='') {
+  if (query === '' || query.trim() === '') {
+     clearInput()
     Notiflix.Notify.failure('Oops, there is no movie with that name');
+   
     return
   }
   clearInput()
@@ -91,59 +90,6 @@ function clearInput() {
   refs.input.innerHTML = ''
   refs.gallery.innerHTML=''
 }
-
-// Kod Slavi
-
-// function onSearch(e) {
-//     e.preventDefault()
-//   filmsApiService.query = e.target.value;
-//   console.log(filmsApiService)
-
-//     if (filmsApiService.query.trim() === '') {
-//          getInfoMessage('Please enter a more specific name.');
-//     }
-
-//       // filmsApiService.resetPage();
-//     clearMoviesContainer();
-    
-
-//     if (filmsApiService.query !== '') {
-//         filmsApiService.fetchSearch().then(movies => {
-//             if (movies.length === 0) {
-//                getErrorMessage('Oops, there is no movie with that name');
- 
-//             } else {
-//                 createFilmCardsMarkUp(movies);
-//             }
-//         })
-//     }
-// }
-
-// function createFilmCardsMarkUp(movieInfo) {
-//   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(movieInfo));
-// }
-
-// function clearMoviesContainer() {
-//   refs.gallery.innerHTML = '';
-// }
-
-
-
-
-
-// function getInfoMessage(message) {
-//     Notiflix.Notify.info(message);
-// }
-
-// function getErrorMessage(message) {
-//     Notiflix.Notify.failure(message);
-// }
-
-
-
-
-
-
 
 
 
