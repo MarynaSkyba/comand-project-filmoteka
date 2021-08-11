@@ -1,6 +1,8 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
-
+const modalDiv=document.getElementById('modal')
 const cardFilm = document.querySelector('.gallery');
+import QueryService from  './query-service';
+const modalApiFetch = new QueryService();
 
 // cardFilm.addEventListener('click', openModal);
 
@@ -23,7 +25,7 @@ const cardFilm = document.querySelector('.gallery');
       
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
-    errorModal();
+   // errorModal();
     console.error('Uuups something go wrong' + error);
   }
 
@@ -41,16 +43,27 @@ function modalClosinByEsc(event) {
     modalClosing();
   }
 }
-// Открытие м.о
-
-//  function openModal(event) {
-//   event.preventDefault();
-//   let data = evt.target.dataset.action;
-//   if (event.target.nodeName !== 'IMG') {
-//     return
-//   } 
-//   renderMovieModal(data);
+//ID(ALeksandra-test)
+// function getMovieId(id) {
+//   modalApiFetch.getMovieId(id).then()
 // }
 
+// Открытие м.о
+
+ function openModal(event) {
+  event.preventDefault();
+   let data = event.target.dataset.action;
+   console.log(data)
+ if (event.target.nodeName !== 'IMG') {
+    return
+   }
+   renderMovieModal(data);
+}
+
+
+ 
+// modalApiFetch.fetchSearchTest(currentPage, query).then(response => {
+//         renderMovieCards(response.results);
+//     } )
 
 
