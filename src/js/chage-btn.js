@@ -19,7 +19,7 @@ function changeHeaderLibraryBtn(){
     refs.menuBtn.classList.remove('is-hidden');
     refs.libraryBtn.classList.add('current');
     refs.homeBtn.classList.remove('current');
-    document.getElementById('the_body').style.backgroundImage = "url('https://cs7.pikabu.ru/post_img/big/2018/06/05/7/15281978511730308.jpg')";
+    document.getElementById('the_body').classList.add('library-bg');
 }
 
 refs.homeBtn.addEventListener('click', changeHeaderHomeBtn)
@@ -29,6 +29,7 @@ function changeHeaderHomeBtn(){
     refs.menuBtn.classList.add('is-hidden');
     refs.libraryBtn.classList.remove('current');
     refs.homeBtn.classList.add('current');
+    document.getElementById('the_body').classList.remove('library-bg')
 }
 
 refs.queueBtn.addEventListener('click', changeColor)
