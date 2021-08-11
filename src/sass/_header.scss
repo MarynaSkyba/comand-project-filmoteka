@@ -10,7 +10,12 @@ text-decoration: none;
     background-repeat: no-repeat;
     background-size: cover;
     background: rgba(0, 0, 0, 0.56);
-    background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/home-bg1024@2x.jpg);
+    background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/home-bg-new.jpg);
+}
+
+.page-header.library-bg{
+    background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/library-bg.jpg);
+
 }
 .main-nav {
     display: flex;
