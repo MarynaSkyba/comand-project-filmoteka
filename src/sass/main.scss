@@ -13,3 +13,15 @@
   fill: black;
   border: 1 px solid red;
 }
+
+
+@import './example';
+
+@import './container';
+@import './gallery';
+@import './pagination';
+@import './header';
+@import './modal';
+@import './footer';
+@import './footer-team.scss';
+
