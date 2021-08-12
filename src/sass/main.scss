@@ -7,21 +7,5 @@
 @import './components/pagination';
 @import './components/modal';
 @import './components/footer';
-
-.menu__icon {
-  color: aqua;
-  fill: black;
-  border: 1 px solid red;
-}
-
-
-@import './example';
-
-@import './container';
-@import './gallery';
-@import './pagination';
-@import './header';
-@import './modal';
-@import './footer';
-@import './footer-team.scss';
+@import './components/footer-team';
 
