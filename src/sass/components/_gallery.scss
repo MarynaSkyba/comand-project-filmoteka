@@ -3,9 +3,9 @@
   margin-bottom: 40px;
 
   @media screen and (min-width: $tablet) {
-    margin-top: 60px; 
+    margin-top: 60px;
     margin-bottom: 60px;
-  }  
+  }
 }
 
 .visually-hidden {
@@ -15,51 +15,51 @@
   margin: -1px;
   border: 0;
   padding: 0;
-  
+
   white-space: nowrap;
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
 
-.gallery {  
+.gallery {
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
-    margin: -15px;    
+    margin: -15px;
   }
 }
 
 .gallery-item {
-    max-width: 280px;
-    cursor: pointer;
-    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 280px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:hover,
-    &:focus{
-        transform: scale(1.1);
-        box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
-    }
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
+  }
 
-    @media screen and (max-width: 767px) {
-      &:not(:last-child) {
-        margin-bottom: 20px;
-      }
+  @media screen and (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
+  }
 
-    @media screen and (min-width: $tablet) {
-      max-width: 294px;
-            
-      width: calc((100% - 4 * 15px) / 2);
-      margin: 15px;
-    }
+  @media screen and (min-width: $tablet) {
+    max-width: 294px;
 
-    @media screen and (min-width: $desktop) {
-      max-width: 274px;
-      width: calc((100% - 6 * 15px) / 3);    
-    }
+    width: calc((100% - 4 * 15px) / 2);
+    margin: 15px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 274px;
+    width: calc((100% - 6 * 15px) / 3);
+  }
 }
 
 .thumb img {
