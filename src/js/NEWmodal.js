@@ -50,7 +50,8 @@ function onPosterDivClick(e) {
     return;
   }
   const activeImg = e.target;
-   const movieId = activeImg.dataset.movieId;
+  const movieId = activeImg.dataset.movieId;
+  console.log(e)
   openModal(movieId)
 }
 
@@ -61,7 +62,7 @@ function openModal(movieId) {
   
   modalApiFetch.fetchById(movieId).then(response => {
       renderMovieModal(response)
-      console.log(response.status)
+      console.log(response)
     
   }
   ).catch(error =>
