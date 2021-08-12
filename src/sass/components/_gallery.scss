@@ -1,18 +1,10 @@
 .section {
-   margin-top: 20px;
-   margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 
-   @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $tablet) {
     margin-top: 60px; 
     margin-bottom: 60px;
-  }  
-}
-
-.pagination-thumb {
-  margin-top: 40px;
-
-   @media screen and (min-width: $tablet) {
-    margin-top: 50px;      
   }  
 }
 
@@ -30,22 +22,41 @@
   overflow: hidden;
 }
 
+.gallery {  
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 35px;
-  margin-top: calc(-1 * 10px);
-  margin-left: calc(-1 * 10px);
+    margin-top: calc(-1 * #{$feature-gap});
+    margin-left: calc(-1 * #{$feature-gap}); 
+  }
 }
 
+.gallery-item {
+    max-width: 280px;
 
-.photo-card {
-  margin-top: 20px;
-  margin-left: 10px;
-  height: auto;
-  flex-basis: calc(100% / 4 - 10px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 5px 5px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 767px) {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media screen and (min-width: $tablet) {
+      max-width: 294px;
+      display: flex;
+      flex-basis: calc(100% / 2 - #{$feature-gap});
+      margin-left: #{$feature-gap};
+      margin-top: #{$feature-gap};
+    }
+
+    @media screen and (min-width: $desktop) {
+      max-width: 274px;
+      flex-basis: calc(100% / 3 - #{$feature-gap});
+    }
+}
+
+.thumb img {
+  width: 100%;
+  border-radius: 5px;
 }
