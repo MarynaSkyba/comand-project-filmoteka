@@ -3,33 +3,33 @@
 <div class="modal__container">
     <div class="film__image">
     
-    <img src="{{poster_path}}" alt="Movie Poster" class="movie-card__poster" />
+    <img class="image" data-movie-id={{id}} src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="Movie Poster"/>
     </div>
 
 
     <div class="film__information">
         <div>
-            <h2 class="film__title">{{title}}</h2>
+            <h2 class="film__title">{{this.title}}</h2>
             <ul>
                 <li class="film__item">
                     <p class="film__details ">Vote / Votes</p>
                     <p class="film__info--uper">
-                        <span class=" film__rating--orange">{{vote_average}}</span>
+                        <span class=" film__rating--orange">{{this.vote_average}}</span>
                         <span class="film__rating--divider"> / </span>
-                        <span>{{vote_count}}</span>
+                        <span>{{this.vote_count}}</span>
                     </p>
                 </li>
                 <li class="film__item">
-                    <p class="film__details ">Popularity</p>
-                    <p class="film__info--uper">{{popularity}}</p>
+                    <p class="film__details">Popularity</p>
+                    <p class="film__info--uper">{{this.popularity}}</p>
                 </li>
                 <li class="film__item">
                     <p class="film__details">Original title</p>
-                    <p>{{original_title}}</p>
+                    <p>{{this.original_title}}</p>
                 </li>
                 <li class="film__item">
                     <p class="film__details">Genre</p>
-                    <p class="film__info">{{genres}}</p>
+                    <p class="film__info">{{this.genres}}</p>
                    
                 </li>
             </ul>
@@ -37,13 +37,13 @@
         <div>
             <h3 class="film__about__title">About</h3>
             <p class="film__about__text">
-                {{overview}}
+                {{this.overview}}
             </p>
         </div>
-        <div class="film__button__wrapper">
-            <button type="button" class=" film__button btn__watch" data-id="{{id}}">Add to watched</button>
-            <button type="button" class=" film__button btn__queue" data-id="{{id}}">Add to queue</button>
+        <div class="film__button__wrapper flip-2-hor-top-1 ">
+            <button type="button" class=" film__button btn__watch animate__animated animate__flipInX " data-movie-id="{{this.id}}">Add to watched</button>
+            <button type="button" class=" film__button btn__queue animate__animated animate__flipInX" data-movie-id="{{this.id}}">Add to queue</button>
         </div>
-        <button type="button" class="close__button" data-action="close-modal"></button>
+        <button type="button" class="close__button animate__animated animate__flipInX" data-action="close-modal"></button>
     </div>
 </div>

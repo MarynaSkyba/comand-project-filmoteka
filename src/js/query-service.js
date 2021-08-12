@@ -18,10 +18,10 @@ export default class QueryService {
     };
 
      async fetchById(movie_id) {
-    const url = `${BASE_URL}movie${movie_id}?api_key=${KEY_USER}`;
+    const url = `${BASE_URL}movie/${movie_id}?api_key=${KEY_USER}`;
      const response = await axios.get(url);
      return response.data;
-    }  
+    };
 
 
     async fetchSearch(query) {

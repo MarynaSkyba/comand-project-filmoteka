@@ -1,13 +1,15 @@
 import modalTemplate from '../template/modal-card-about-film.hbs'
+import getRefs from './refs';
+import Notiflix from "notiflix";
 const modalDiv=document.getElementById('modal')
-const cardFilm = document.querySelector('.gallery');
+const refs = getRefs();
+
 import QueryService from  './query-service';
+
 const modalApiFetch = new QueryService();
 
-// cardFilm.addEventListener('click', openModal);
+refs.gallery.addEventListener('click', onPosterDivClick);
 
-
-  //  отрисовка модального окна Настя можешь взять эту а можешь заливать через шаблон напрямую-тогда я немного сменню логику закрытия
   export default function renderMovieModal(data) {
   
     const modalMarkup = modalTemplate(data);
@@ -25,8 +27,7 @@ const modalApiFetch = new QueryService();
       
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
-   // errorModal();
-    console.error('Uuups something go wrong' + error);
+      console.error('Oops something go wrong' + error);
   }
 
 }
@@ -43,25 +44,36 @@ function modalClosinByEsc(event) {
     modalClosing();
   }
 }
-//ID(ALeksandra-test)
-// function getMovieId(id) {
-//   modalApiFetch.getMovieId(id).then()
-// }
 
-// Открытие м.о
-
- function openModal(event) {
-  event.preventDefault();
-   let data = event.target.dataset.action;
-   console.log(data)
- if (event.target.nodeName !== 'IMG') {
-    return
-   }
-   renderMovieModal(data);
+function onPosterDivClick(e) {
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+  const activeImg = e.target;
+   const movieId = activeImg.dataset.movieId;
+  openModal(movieId)
 }
 
 
- 
-// modalApiFetch.fetchSearchTest(currentPage, query).then(response => {
-//         renderMovieCards(response.results);
-//     } )
+// Открытие м.о
+
+function openModal(movieId) {
+  
+  modalApiFetch.fetchById(movieId).then(response => {
+      renderMovieModal(response)
+      console.log(response.status)
+    
+  }
+  ).catch(error =>
+     {if (error = 404) {
+      Notiflix.Notify.failure('Sorry this movie temporary not aviable')
+     } }
+   )
+
+}
+
+
+
+
+
+

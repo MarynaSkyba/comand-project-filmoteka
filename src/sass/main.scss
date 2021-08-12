@@ -1,22 +1,11 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+@import './utils/variables';
+@import './utils/breakpoints';
+@import './base/base';
+@import './components/header';
+@import './components/container';
+@import './components/gallery';
+@import './components/pagination';
+@import './components/modal';
+@import './components/footer';
+@import './components/footer-team';
 
-// Стили для файла с примером HTML-фрагмента
-// @import './example';
-
-.menu__icon {
-  color: aqua;
-  fill: black;
-  border: 1 px solid red;
-}
-
-@import './example';
-
-@import './container';
-@import './gallery';
-@import './pagination';
-@import './header';
-@import './modal';
-@import './footer';
