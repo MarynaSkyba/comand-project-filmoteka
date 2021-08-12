@@ -28,13 +28,13 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    margin-top: calc(-1 * #{$feature-gap});
-    margin-left: calc(-1 * #{$feature-gap}); 
+    margin: -15px;    
   }
 }
 
 .gallery-item {
     max-width: 280px;
+    cursor: pointer;
 
     @media screen and (max-width: 767px) {
       &:not(:last-child) {
@@ -44,15 +44,14 @@
 
     @media screen and (min-width: $tablet) {
       max-width: 294px;
-      display: flex;
-      flex-basis: calc(100% / 2 - #{$feature-gap});
-      margin-left: #{$feature-gap};
-      margin-top: #{$feature-gap};
+            
+      width: calc((100% - 4 * 15px) / 2);
+      margin: 15px;
     }
 
     @media screen and (min-width: $desktop) {
       max-width: 274px;
-      flex-basis: calc(100% / 3 - #{$feature-gap});
+      width: calc((100% - 6 * 15px) / 3);    
     }
 }
 
