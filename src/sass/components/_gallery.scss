@@ -35,6 +35,13 @@
 .gallery-item {
     max-width: 280px;
     cursor: pointer;
+    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus{
+        transform: scale(1.1);
+        box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
+    }
 
     @media screen and (max-width: 767px) {
       &:not(:last-child) {
