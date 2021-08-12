@@ -55,8 +55,9 @@ spinner.spin(target);
 
 // });
 queryService.fetchDate(page).then(response => {
-    pagination.reset(response[0].total_pages);
+    pagination.reset(response[1].total_pages);
     renderMoveGallery(response);
+    console.log(response);
     spinner.stop();
  });
 
