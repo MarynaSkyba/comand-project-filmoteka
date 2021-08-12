@@ -1,12 +1,15 @@
 .pagination-thumb { 
     max-width: 280px;
     height: 40px;
+    margin-top: 40px;
     margin-right: auto;  
     margin-left: auto;         
 
     @media screen and (min-width: $tablet) {
-    max-width: 374px; 
-    }      
+        max-width: 374px; 
+        margin-top: 50px;
+    }   
+    
 }
 
 .tui-pagination {

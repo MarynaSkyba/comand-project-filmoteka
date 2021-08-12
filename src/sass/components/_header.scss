@@ -177,3 +177,10 @@ padding-bottom: 50px;
 .is-hidden {
     display: none;
 }
+
+.picture {
+    height: 480px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/images/no-gallery.jpeg);
+}

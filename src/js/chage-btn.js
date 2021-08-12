@@ -9,7 +9,12 @@ function addGallery(){
     Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
 
     refs.gallery.innerHTML = '';
+    refs.gallery.classList.add('picture');
     
+    const tui = document.querySelector('.pagination-thumb')
+    tui.classList.add('is-hidden')
+   
+
     // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
 }
 
