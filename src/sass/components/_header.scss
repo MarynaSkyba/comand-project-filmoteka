@@ -80,9 +80,25 @@ color: $white-color;
   width: 100%;
   display: block;
   background-color: $accent-color;
-  height: 3px;
+  height: 2px;
   border-radius: 1px;
+  transition: transform .3s ease;
 }
+
+
+.current:hover::after {
+   transform: scaleX(0);
+  }
+
+.icon-film{
+    fill: red;
+
+}
+
+.icon-film:hover{
+    fill: $accent-color;
+}
+
 
 .input-container{
 display: flex;
@@ -121,6 +137,7 @@ padding-bottom: 60px;
     top: 25%;
     content: "";
 }
+
     
 
 
@@ -136,11 +153,21 @@ padding-bottom: 50px;
     border: 1px solid $white-color;
     color: $white-color;
     padding: 15px;
-    margin-right: 15px;
+    margin-right: 20px;
     width: 130px;
     border-radius: 4px;
     background: transparent;
+    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    
+    &:hover,
+    &:focus{
+        transform: scale(1.1);
+        box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
+    }
+
 }
+
 
 .active-btn {
     border:none;
