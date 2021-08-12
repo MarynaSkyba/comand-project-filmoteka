@@ -1,12 +1,12 @@
 @import './utils/variables';
 @import './utils/breakpoints';
 @import './base/base';
-@import './header';
-@import './container';
-@import './gallery';
-@import './pagination';
-@import './modal';
-@import './footer';
+@import './components/header';
+@import './components/container';
+@import './components/gallery';
+@import './components/pagination';
+@import './components/modal';
+@import './components/footer';
 
 .menu__icon {
   color: aqua;
