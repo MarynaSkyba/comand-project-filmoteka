@@ -3,7 +3,7 @@ export default function getRefs() {
 
     gallery : document.querySelector('.gallery'),
 
-    container : document.querySelector('.film-gallery'),
+    // container : document.querySelector('.film-gallery'),
     watchedBtn: document.getElementById('watched_btn'),
     queueBtn: document.getElementById('queue_btn'),
 
@@ -14,7 +14,4 @@ export default function getRefs() {
     menuBtn: document.querySelector('.nav-btn'),
         menuInput: document.querySelector('.input-container')
 
-    
-        // watchedBtnModal: document.querySelector('.btn_watch')
-        // queueBtnModal: document.querySelector('btn_queue')
     }}
