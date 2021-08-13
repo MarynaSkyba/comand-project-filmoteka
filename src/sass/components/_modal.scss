@@ -9,7 +9,7 @@
   height: 100vh;
   opacity: 0;
   pointer-events: none;
-
+  transition: opacity $timing-function $transition-duration;
   z-index: 2;
 }
 
@@ -58,6 +58,7 @@
 .film__button__wrapper {
   display: flex;
 }
+
 .film__button {
   font-weight: 500;
   font-size: 12px;
@@ -74,7 +75,7 @@
   background-color: $white-color;
   cursor: pointer;
   border: 1px solid $footer-text-color;
-
+  color: #000;
   &:hover,
   &:focus {
     background-color: $accent-color;
@@ -199,4 +200,7 @@
   font-size: 12px;
   line-height: 1.6;
   margin-bottom: 21px;
+}
+.animate__flipInX {
+  --animate-duration: 2s;
 }
