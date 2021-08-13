@@ -5,60 +5,79 @@
 }
 
 .footer-lisense {
-  margin: 0;
-  padding: 0;
   text-align: center;
   color: $footer-text-color;
   font-size: 14px;
   line-height: 1.14;
   margin-bottom: 30px;
 
-
-  @media  screen and (min-width: $tablet) {
+  @media screen and (min-width: $tablet) {
     font-size: 16px;
     line-height: 1.17;
     display: flex;
     justify-content: center;
-    
-   
   }
 
   @media screen and (min-width: $desktop) {
     font-size: 16px;
     line-height: 1.17;
-    
   }
-
 }
 
 .modal-students-text {
-  color: #ff6b08;
-  text-transform: uppercase;
-  text-decoration: blink;
+  color: rgb(122, 84, 13);
   font-family: Roboto;
-  font-style: oblique;
+  font-style: normal;
+  font-weight: normal;
   font-size: 16px;
-  font-weight: 700;
-  line-height: 1.17;
-  text-shadow: 4px 2px 4px rgb(0 0 0 / 25%);
+  line-height: 19px;
+  border-bottom: 1px solid;
 
   @media screen and (max-width: 480px) {
     font-size: 14px;
-
   }
 }
 
-// .heart-icon-svg {
-//   display: inline-flex;
-//   align-items: center;
-//   border-radius: 50%;
-//   cursor: pointer;
-//   box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
-//   animation: pulse 1s infinite;
-//   margin: 0px;
-//   padding: 0px;
-// }
+.heart-icon {
+  position: absolute;
+  width: 20px;
+  height: 13px;
+  margin-left: 5px;
+  margin-top: 3px;
 
-// p{
-//   margin: 0;
-// }
+  @media screen and (max-width: 767px) {
+    // position: relative;
+    width: 15px;
+    height: 15px;
+    margin-left: 30px;
+    margin-top: 5px;
+  }
+}
+
+.goit {
+  margin-left: 8px;
+  margin-right: 6px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid;
+  @media screen and (max-width: 767px) {
+    margin-left: 30px;
+  }
+}
+.made {
+  margin-right: 10px;
+  margin-left: 5px;
+
+  @media screen and (max-width: 767px) {
+    margin-right: 0px;
+    margin-top: 8px;
+    margin-left: 25px;
+    display: inline-block;
+  }
+}
+.by {
+  margin-left: 27px;
+
+  @media screen and (max-width: 767px) {
+    margin-left: 5px;
+  }
+}
