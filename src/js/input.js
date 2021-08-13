@@ -4,10 +4,9 @@ import getRefs from './refs';
 import Notiflix from "notiflix";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import {target, spinner}  from './spinner.js'
 
 
-const debounce = require('lodash.debounce')
-const DEBOUNCE_DELAY = 300;
 const refs = getRefs();
 
 const options = {
@@ -41,43 +40,37 @@ const page = paginationInput.getCurrentPage();
 const filmsApiService = new QueryService();
 
 
-refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
-
-
-function renderMovieCards(name) {
-  
-  refs.gallery.insertAdjacentHTML('beforeend', moviesCard(name));
-  
-}
-
-
+refs.searchForm.addEventListener('submit', onSearch);
  
 
-function onSearch(e) {
-  const query = e.target.value
-  if (query === '' || query.trim() === '') {
-     clearInput()
-    Notiflix.Notify.failure('Oops, there is no movie with that name');
-   
-    return
-  }
+async function onSearch(e) {
+  e.preventDefault();
+  filmsApiService.query = e.currentTarget.elements.searchQuery.value;
+  console.log(filmsApiService.query)
+
+  try{
+    const result = await filmsApiService.fetchSearch();
+
+    if (filmsApiService.query.trim === '' || result.results.length === 0) {
+    Notiflix.Notify.failure('Oops, there are no movies with that name');
+    return;
+  } else {
   clearInput()
-
- filmsApiService.fetchSearch(query).then(response => {
-   console.log(response);
-   paginationInput.reset(response.total_pages);
-
-   renderMovieCards(response.results);
-   console.log(response.results)
+  paginationInput.reset(result.total_pages);
+   renderMovieCards(result.results);
+   console.log(result.results)
+  }}
+  
+  catch(error) {
+    console.log(error)
   }
-  ).catch(error => console.log(error))
  
 
 }
 
 paginationInput.on('afterMove', (event) => {
   const currentPage = event.page;
-  const query = refs.input.value
+  const query = refs.searchForm.searchQuery.value;
     console.log(query)
     filmsApiService.fetchSearchTest(currentPage, query).then(response => {
         renderMovieCards(response.results);
@@ -85,10 +78,14 @@ paginationInput.on('afterMove', (event) => {
 });
 
 
+function renderMovieCards(data) {  
+  refs.gallery.insertAdjacentHTML('beforeend', moviesCard(data));
+}
+
+
 
 function clearInput() {
-  refs.input.innerHTML = ''
-  refs.gallery.innerHTML=''
+  refs.gallery.innerHTML= '';
 }
 
 

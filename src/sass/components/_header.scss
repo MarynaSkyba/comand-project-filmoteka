@@ -109,6 +109,7 @@ padding-bottom: 60px;
 
 
 .form-field{
+    display: flex;
     position: relative;
     width: 300px;
     
@@ -123,6 +124,7 @@ padding-bottom: 60px;
     border-left: 0;
     border-right: 0;
     background-color: transparent;
+    outline: none;
 
     &::placeholder {
     color: $white-color;
@@ -131,11 +133,25 @@ padding-bottom: 60px;
 }
 }
 
+.svg-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    margin-left: -50px;
+    width: 50px;
+}
+
 .icon-search {
     position: absolute;
     right: 0;
     top: 25%;
     content: "";
+    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus{
+        transform: scale(1.5);
+    }
 }
 
     
@@ -183,3 +199,5 @@ padding-bottom: 50px;
     background-repeat: no-repeat;
     background-image: url(/images/no-gallery.jpeg);
 }
+
+

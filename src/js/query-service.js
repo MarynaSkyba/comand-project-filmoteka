@@ -6,7 +6,7 @@ export default class QueryService {
         this.time_window = 'day';
         this.media_type = '/all/';
         this.home = 'trending';
-        // this.searchQuery = '';
+        this.searchQuery = '';
         // this.page = 1;
         //  this.id = '';
     }
@@ -47,13 +47,13 @@ export default class QueryService {
 //                 });
 //     };
 
-    async fetchSearch(query) {
-        const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}`;
+    async fetchSearch() {
+        const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${this.searchQuery}`;
         const response = await axios.get(url);
         return response.data;
     }
     //Aleksandra: napisala kod nije dla paginacii tekus4ego poiska na stanicah
-    async fetchSearchTest(page, query) {
+    async fetchSearchTest(page,query) {
         const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}&page=${page}`;
         const response = await axios.get(url);
         return response.data;
@@ -82,6 +82,14 @@ export default class QueryService {
             return (genreList = `${genreList[0]}, ${genreList[1]}, Other`);
         }
     }
+
+    get query() {
+        return this.searchQuery;
+    }
+    
+    set query(newQuery) {
+     this.searchQuery = newQuery;
+ }
 }
 
  
