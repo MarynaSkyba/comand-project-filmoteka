@@ -36,25 +36,40 @@ const options = {
 const pagination = new Pagination('#tui-pagination-container', options);
 const page = pagination.getCurrentPage();
 spinner.spin(target);
+// queryService.fetchDate(page).then(response => {
+//     console.log(response);
+//     pagination.reset(response.total_pages);
+//     renderMoveGallery(response.results);
+//     spinner.stop();
+//  });
+
+// pagination.on('afterMove', (event) => {
+//     spinner.spin(target);
+//     const currentPage = event.page;
+//     clearGallery();  
+//     queryService.fetchDate(currentPage).then(response => {
+//         renderMoveGallery(response.results);
+
+//         spinner.stop();
+//     } )
+
+// });
 queryService.fetchDate(page).then(response => {
+    pagination.reset(response[1].total_pages);
+    renderMoveGallery(response);
     console.log(response);
-    pagination.reset(response.total_pages);
-    renderMoveGallery(response.results);
     spinner.stop();
  });
 
 pagination.on('afterMove', (event) => {
     spinner.spin(target);
     const currentPage = event.page;
-    clearGallery();  
+    clearGallery();
     queryService.fetchDate(currentPage).then(response => {
-        renderMoveGallery(response.results);
-
+        renderMoveGallery(response);
         spinner.stop();
     } )
-
 });
-
  function renderMoveGallery(data) {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
 }
