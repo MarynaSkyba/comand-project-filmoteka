@@ -9,7 +9,7 @@ export default function getRefs() {
 
     homeBtn: document.querySelector('.home_btn'),
     libraryBtn: document.querySelector('.library_btn'),
-    input: document.querySelector('.input'),
+    searchForm: document.querySelector('.form-field'),
 
     menuBtn: document.querySelector('.nav-btn'),
         menuInput: document.querySelector('.input-container')
