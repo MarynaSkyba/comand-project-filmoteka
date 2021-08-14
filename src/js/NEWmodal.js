@@ -2,10 +2,11 @@ import modalTemplate from '../template/modal-card-about-film.hbs'
 import getRefs from './refs';
 import Notiflix from "notiflix";
 import QueryService from  './query-service';
+import moviesCard from '../template/tmp-card.hbs';
 const modalDiv=document.getElementById('modal')
 const refs = getRefs();
 const modalApiFetch = new QueryService();
-import moviesCard from '../template/tmp-card.hbs';
+const tui = document.querySelector('.pagination-thumb')
 
 
 let library = [];
@@ -134,11 +135,18 @@ refs.watchedBtn.addEventListener('click',renderWatchedMarkup)
 function renderWatchedMarkup(list) {
 
   list = [...watchedLibrary]
-  if (list.find(e => e.title === currentMovieW.title)) {
+  if (watchedLibrary.length === 0){
+    console.log(watchedLibrary.length) 
+    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
+    refs.gallery.innerHTML = '';
+    refs.gallery.classList.add('picture');
+    
+    tui.classList.add('is-hidden')
+  } else if (list.find(e => e.title === currentMovieW.title)) {
     refs.watchedBtn.disabled = true
     
   }
-  
+ 
   refs.gallery.innerHTML=''
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
   refs.queueBtn.disabled = false
@@ -146,19 +154,28 @@ function renderWatchedMarkup(list) {
  
 refs.queueBtn.addEventListener('click',renderQueueMarkup)
 function renderQueueMarkup(list) {
+
   list = [...queueLibrary]
-  if (list.find(e => e.title === currentMovieQ.title)) {
+  if (queueLibrary.length === 0){
+    console.log(queueLibrary.length)
+
+      Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
+      refs.gallery.innerHTML = '';
+      refs.gallery.classList.add('picture');
+      tui.classList.add('is-hidden')
+
+    } else if (list.find(e => e.title === currentMovieQ.title)) {
     refs.queueBtn.disabled = true
    
    
   }
+  
   refs.gallery.innerHTML=''
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
   refs.watchedBtn.disabled = false
 }
 
 // Library
-const tui = document.querySelector('.pagination-thumb')
 
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
@@ -167,52 +184,55 @@ if (watchedLibrary.length === 0 && queueLibrary.length === 0){
   console.log(queueLibrary.length)
     console.log(watchedLibrary.length) 
     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
-    refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
+    refs.gallery.innerHTML = '';
     tui.classList.add('is-hidden')
   } else {
-    addWatchFilm();
+    library = [...watchedLibrary, ...queueLibrary];
+refs.gallery.innerHTML = '';
+refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
+tui.classList.add('is-hidden')
   }
 }
   
   
 
-refs.watchedBtn.addEventListener('click', addWatchFilm)
+// refs.watchedBtn.addEventListener('click', addWatchFilm)
 
-function addWatchFilm (){
+// function addWatchFilm (){
 
-  if (watchedLibrary.length === 0){
-    console.log(watchedLibrary.length) 
-    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
-    refs.gallery.innerHTML = '';
-    refs.gallery.classList.add('picture');
+//   if (watchedLibrary.length === 0){
+//     console.log(watchedLibrary.length) 
+//     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
+//     refs.gallery.innerHTML = '';
+//     refs.gallery.classList.add('picture');
     
-    tui.classList.add('is-hidden')
-  } else  {
-refs.gallery.classList.remove('picture');
-library = [...watchedLibrary];
-refs.gallery.innerHTML = '';
-refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
-tui.classList.add('is-hidden')
-}}
+//     tui.classList.add('is-hidden')
+//   } else  {
+// refs.gallery.classList.remove('picture');
+// library = [...watchedLibrary];
+// refs.gallery.innerHTML = '';
+// refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
+// tui.classList.add('is-hidden')
+// }}
   
 
-refs.queueBtn.addEventListener('click', addQueueFilm)
+// refs.queueBtn.addEventListener('click', addQueueFilm)
 
 
-function addQueueFilm(){
-  if (queueLibrary.length === 0){
-    console.log(queueLibrary.length)
+// function addQueueFilm(){
+//   if (queueLibrary.length === 0){
+//     console.log(queueLibrary.length)
 
-      Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
-      refs.gallery.innerHTML = '';
-      refs.gallery.classList.add('picture');
+//       Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
+//       refs.gallery.innerHTML = '';
+//       refs.gallery.classList.add('picture');
       
-      tui.classList.add('is-hidden')
-    } else {
-      refs.gallery.classList.remove('picture');
-  library = [...queueLibrary];
-  refs.gallery.innerHTML = '';
-  refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
-  tui.classList.add('is-hidden')
-}}
+//       tui.classList.add('is-hidden')
+//     } else {
+//       refs.gallery.classList.remove('picture');
+//   library = [...queueLibrary];
+//   refs.gallery.innerHTML = '';
+//   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
+//   tui.classList.add('is-hidden')
+// }}
