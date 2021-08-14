@@ -90,15 +90,6 @@ color: $white-color;
    transform: scaleX(0);
   }
 
-.icon-film{
-    fill: red;
-
-}
-
-.icon-film:hover{
-    fill: $accent-color;
-}
-
 
 .input-container{
 display: flex;
@@ -146,7 +137,7 @@ padding-bottom: 60px;
     right: 0;
     top: 25%;
     content: "";
-    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform $transition-duration $timing-function;
 
     &:hover,
     &:focus{
@@ -173,7 +164,7 @@ padding-bottom: 50px;
     width: 130px;
     border-radius: 4px;
     background: transparent;
-    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform $transition-duration $timing-function;
 
     
     &:hover,

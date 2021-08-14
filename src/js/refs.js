@@ -2,7 +2,7 @@ export default function getRefs() {
     return {
 
     gallery : document.querySelector('.gallery'),
-
+galleryItem:document.querySelector('.gallery-item'),
     // container : document.querySelector('.film-gallery'),
     watchedBtn: document.getElementById('watched_btn'),
         queueBtn: document.getElementById('queue_btn'),
