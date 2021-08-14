@@ -66,45 +66,55 @@ function openModal(movieId) {
     renderMovieModal(response)
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
+    const trailerBtn = document.querySelector('.btn__trailer');
     watchedBtnM.addEventListener('click', () => {
-      currentMovieW=response
+      currentMovieW = response
       localStorage.setItem('watched', JSON.stringify(response))
       const watched = JSON.parse(localStorage.getItem('watched'))
       if (watchedLibrary.find(e => e.title === response.title)) {
         Notiflix.Notify.failure('Oops, you already have this movie in watched');
         watchedBtnM.disabled = true
     
-    return
+        return
       } else if (queueLibrary.find(e => e.title === currentMovieW.title)) {
         Notiflix.Notify.failure('Oops, you already have this movie in your library');
         queueBtnM.disabled = true
         return
-  }
+      }
      
       watchedLibrary.push(watched)
-       Notiflix.Notify.success('The movie was successfully added to the library');
+      Notiflix.Notify.success('The movie was successfully added to the library');
       
     })
     queueBtnM.addEventListener('click', () => {
-      currentMovieQ=response
+      currentMovieQ = response
       localStorage.setItem('queue', JSON.stringify(response))
       const queue = JSON.parse(localStorage.getItem('queue'))
       if (queueLibrary.find(e => e.title === response.title)) {
         Notiflix.Notify.failure('Oops, you already put this movie in queue');
         queueBtnM.disabled = true
     
-    return
+        return
       } else if (watchedLibrary.find(e => e.title === currentMovieQ.title)) {
         Notiflix.Notify.failure('Oops, you already have this movie in your library');
         watchedBtnM.disabled = true
         return
-  }
+      }
       
       queueLibrary.push(queue)
-      Notiflix.Notify.success('The movie was successfully added to the library');       
+      Notiflix.Notify.success('The movie was successfully added to the library');
 
-   })
-    
+    })    
+    trailerBtn.addEventListener('click', openLightbox);
+
+    function openLightbox() {
+      refs.lightbox.classList.add('is-open');     
+    }
+
+    refs.closeLightboxBtn.addEventListener('click', onCloseLightbox);
+    function onCloseLightbox() {
+      refs.lightbox.classList.remove('is-open');
+    }    
   }
   )
   .catch (error =>

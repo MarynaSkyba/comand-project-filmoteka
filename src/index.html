@@ -15,18 +15,16 @@
 
 </head>
   <body>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <include src="./partials/header.html"></include>
     <include src="./partials/gallery.html"></include>
     <include src="./partials/spinner.html"></include>
     <include src="./partials/footer.html"></include>
-    <include src="./partials/modal_footer.html"></include>
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-    
     <!-- Модалки -->
-    <div id="modal" class="modal"></div>
-
+    <include src="./partials/modal_card.html"></include>
+    <include src="./partials/modal_footer.html"></include>
+    <include src="./partials/trailer_modal.html"></include>     
+     
     <script src="./index.js"></script>
-<script type="text/javascript" src="//web-ptica.ru/VRV-files/knopkavverh/8.js"></script>
+    <script type="text/javascript" src="//web-ptica.ru/VRV-files/knopkavverh/8.js"></script>
   </body>
 </html>
