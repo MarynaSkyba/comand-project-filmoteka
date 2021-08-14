@@ -8,9 +8,9 @@ const modalApiFetch = new QueryService();
 import moviesCard from '../template/tmp-card.hbs';
 
 
-let library = []
-let watchedLibrary = []
-let queueLibrary = []
+let library = [];
+let watchedLibrary = [];
+let queueLibrary = [];
 
 
 refs.gallery.addEventListener('click', onPosterDivClick);
