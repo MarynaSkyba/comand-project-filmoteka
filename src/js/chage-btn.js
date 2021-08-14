@@ -2,21 +2,21 @@ import Notiflix from 'notiflix';
 import getRefs from './refs';
 const refs = getRefs();
 
-refs.libraryBtn.addEventListener('click', addGallery)
+// refs.libraryBtn.addEventListener('click', addGallery)
 
 
-function addGallery(){
-    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+// function addGallery(){
+//     Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
 
-    refs.gallery.innerHTML = '';
-    refs.gallery.classList.add('picture');
+//     refs.gallery.innerHTML = '';
+//     refs.gallery.classList.add('picture');
     
-    const tui = document.querySelector('.pagination-thumb')
-    tui.classList.add('is-hidden')
+//     const tui = document.querySelector('.pagination-thumb')
+//     tui.classList.add('is-hidden')
    
 
-    // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
-}
+//     // refs.container.insertAdjacentHTML('beforeend', templateCard(data));
+// }
 
 refs.libraryBtn.addEventListener('click', changeHeaderLibraryBtn)
 
