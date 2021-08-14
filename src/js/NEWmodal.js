@@ -66,10 +66,12 @@ function openModal(movieId) {
     renderMovieModal(response)
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
+
     watchedBtnM.addEventListener('click', () => {
       currentMovieW=response
       localStorage.setItem('watched', JSON.stringify(response))
       const watched = JSON.parse(localStorage.getItem('watched'))
+     
       if (watchedLibrary.find(e => e.title === response.title)) {
         Notiflix.Notify.failure('Oops, you already have this movie in watched');
         watchedBtnM.disabled = true
@@ -83,7 +85,6 @@ function openModal(movieId) {
      
       watchedLibrary.push(watched)
        Notiflix.Notify.success('The movie was successfully added to the library');
-      
     })
     queueBtnM.addEventListener('click', () => {
       currentMovieQ=response
@@ -145,19 +146,60 @@ function renderQueueMarkup(list) {
 
 // Library
 
-refs.libraryBtn.addEventListener('click', () => {
+
+refs.libraryBtn.addEventListener('click', onLibraryClick)
   
-  library = [...watchedLibrary, ...queueLibrary]
+  function onLibraryClick () {
+if (watchedLibrary.length === 0 && queueLibrary.length === 0){
+  console.log(queueLibrary.length)
+    console.log(watchedLibrary.length) 
+    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+    refs.gallery.innerHTML = '';
+    refs.gallery.classList.add('picture');
+    
+    const tui = document.querySelector('.pagination-thumb')
+    tui.classList.add('is-hidden')
+  } else {
+    addWatchFilm();
+  }
+}
+  
+  
+
+refs.watchedBtn.addEventListener('click', addWatchFilm)
+
+function addWatchFilm (){
+  if (watchedLibrary.length === 0){
+    console.log(watchedLibrary.length) 
+    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+    refs.gallery.innerHTML = '';
+    refs.gallery.classList.add('picture');
+    
+    const tui = document.querySelector('.pagination-thumb')
+    tui.classList.add('is-hidden')
+  } else  {
+refs.gallery.classList.remove('picture');
+library = [...watchedLibrary];
+refs.gallery.innerHTML = '';
+refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
+}}
+  
+
+refs.queueBtn.addEventListener('click', addQueueFilm)
+
+function addQueueFilm(){
+  if (queueLibrary.length === 0){
+    console.log(queueLibrary.length)
+
+      Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+      refs.gallery.innerHTML = '';
+      refs.gallery.classList.add('picture');
+      
+      const tui = document.querySelector('.pagination-thumb')
+      tui.classList.add('is-hidden')
+    } else {
+      refs.gallery.classList.remove('picture');
+  library = [...queueLibrary];
   refs.gallery.innerHTML = '';
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
-})
-
-
-
-
-
-
-
-
-
-
+}}

@@ -3,7 +3,7 @@
 <div class="modal__container">
     <div class="film__image">
     
-    <img class="image" data-movie-id={{id}} src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="Movie Poster"/>
+    <img class="image" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="Movie Poster"/>
     </div>
 
 
@@ -11,7 +11,7 @@
         <div>
             <h2 class="film__title">{{this.title}}</h2>
             <ul>
-                <li class="film__item">
+                <li class="film__item" data-movie-id={{id}}>
                     <p class="film__details ">Vote / Votes</p>
                     <p class="film__info--uper">
                         <span class=" film__rating--orange">{{this.vote_average}}</span>
