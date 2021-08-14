@@ -8,9 +8,9 @@ const modalApiFetch = new QueryService();
 import moviesCard from '../template/tmp-card.hbs';
 
 
-let library = []
-let watchedLibrary = []
-let queueLibrary = []
+let library = [];
+let watchedLibrary = [];
+let queueLibrary = [];
 
 
 refs.gallery.addEventListener('click', onPosterDivClick);
@@ -62,7 +62,7 @@ let currentMovieW
 let currentMovieQ
 function openModal(movieId) {
   
-  modalApiFetch.fetchById(movieId).then(response => {
+  modalApiFetch.fetchByIdModal(movieId).then(response => {
     renderMovieModal(response)
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
@@ -86,6 +86,7 @@ function openModal(movieId) {
       watchedLibrary.push(watched)
        Notiflix.Notify.success('The movie was successfully added to the library');
     })
+
     queueBtnM.addEventListener('click', () => {
       currentMovieQ=response
       localStorage.setItem('queue', JSON.stringify(response))
