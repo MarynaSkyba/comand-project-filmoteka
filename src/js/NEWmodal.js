@@ -153,7 +153,7 @@ refs.libraryBtn.addEventListener('click', onLibraryClick)
 if (watchedLibrary.length === 0 && queueLibrary.length === 0){
   console.log(queueLibrary.length)
     console.log(watchedLibrary.length) 
-    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
     
@@ -171,7 +171,7 @@ refs.watchedBtn.addEventListener('click', addWatchFilm)
 function addWatchFilm (){
   if (watchedLibrary.length === 0){
     console.log(watchedLibrary.length) 
-    Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
     
@@ -182,6 +182,7 @@ refs.gallery.classList.remove('picture');
 library = [...watchedLibrary];
 refs.gallery.innerHTML = '';
 refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
+tui.classList.add('is-hidden')
 }}
   
 
@@ -191,7 +192,7 @@ function addQueueFilm(){
   if (queueLibrary.length === 0){
     console.log(queueLibrary.length)
 
-      Notiflix.Notify.failure('Sorry, there are no film at your library yet. Want to add some?');
+      Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
       refs.gallery.innerHTML = '';
       refs.gallery.classList.add('picture');
       
@@ -202,4 +203,5 @@ function addQueueFilm(){
   library = [...queueLibrary];
   refs.gallery.innerHTML = '';
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library))
+  tui.classList.add('is-hidden')
 }}
