@@ -10,12 +10,6 @@ export default class QueryService {
         // this.page = 1;
         //  this.id = '';
     }
-    
-    // async fetchDate(page) {
-    //     const url = `${BASE_URL}${this.home}${this.media_type}${this.time_window}?api_key=${KEY_USER}&page=${page}`;
-    //     const response = await axios.get(url);
-    //     return response.data;
-    // };
 
      async fetchDate(page) {
         const url = `${BASE_URL}${this.home}${this.media_type}${this.time_window}?api_key=${KEY_USER}&page=${page}`;
@@ -32,31 +26,54 @@ export default class QueryService {
                 });
     };
 
-     async fetchById(movie_id) {
-    const url = `${BASE_URL}movie/${movie_id}?api_key=${KEY_USER}`;
-     const response = await axios.get(url);
-     return response.data;
-    };
-//  async fetchById(movie_id) {
-//     const url = `${BASE_URL}movie/${movie_id}?api_key=${KEY_USER}`;
-//      const response = await axios.get(url);
-//        return this.fetchFilmGenre().then(genres => {
-//                     return  [response].map(result => ({
-//                         genres: this.filterGenres(genres, result),
-//                     }));
-//                 });
-//     };
+    //   async fetchById(movie_id) {
+    //     const url = `${BASE_URL}movie/${movie_id}?api_key=${KEY_USER}`;
+    //     const response = await axios.get(url);
+    //     return response.data
+      
+    // }
 
-    async fetchSearch() {
-        const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${this.searchQuery}`;
+    async fetchByIdModal(movie_id) {
+        const url = `${BASE_URL}movie/${movie_id}?api_key=${KEY_USER}`;
+        const response = await axios.get(url);       
+        const responseObj = response.data;
+        const genres = response.data.genres;
+        return {
+            ...responseObj,
+            release_date: response.data.release_date
+                            ? response.data.release_date.slice(0, 4)
+                            : response.data.release_date,
+            genres: this.filterGenresModal(genres),
+        };
+    }
+    async fetchSearch(page) {
+        const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${this.searchQuery}&page=${page}`;
         const response = await axios.get(url);
-        return response.data;
+         return this.fetchFilmGenre().then(genres => {
+                    return  response.data.results.map(result => ({
+                        ...result,
+                        total_pages: response.data.total_pages,
+                        release_date: result.release_date
+                            ? result.release_date.slice(0, 4)
+                            : result.release_date,
+                        genres: this.filterGenres(genres, result),
+                    }));
+                });
     }
     //Aleksandra: napisala kod nije dla paginacii tekus4ego poiska na stanicah
-    async fetchSearchTest(page,query) {
+     async fetchSearchTest(page, query) {
         const url = `${BASE_URL}search/movie?api_key=${KEY_USER}&query=${query}&page=${page}`;
         const response = await axios.get(url);
-        return response.data;
+         return this.fetchFilmGenre().then(genres => {
+                    return  response.data.results.map(result => ({
+                        ...result,
+                        total_pages: response.data.total_pages,
+                        release_date: result.release_date
+                            ? result.release_date.slice(0, 4)
+                            : result.release_date,
+                        genres: this.filterGenres(genres, result),
+                    }));
+                });
     }
 
     async fetchFilmGenre() {
@@ -83,6 +100,22 @@ export default class QueryService {
         }
     }
 
+    
+  filterGenresModal(genres) {
+    let genreList = genres.map(genre => genre.name).flat();
+    if (genreList.length === 0) {
+      return (genreList = `Unknown`);
+    }
+    if (genreList.length === 1) {
+      return (genreList = `${genreList[0]}`);
+    }
+    if (genreList.length === 2) {
+      return (genreList = `${genreList[0]}, ${genreList[1]}`);
+    } else if (genreList.length > 2) {
+      return (genreList = `${genreList[0]}, ${genreList[1]}, Other`);
+    }
+     return genreList 
+  }
     get query() {
         return this.searchQuery;
     }
