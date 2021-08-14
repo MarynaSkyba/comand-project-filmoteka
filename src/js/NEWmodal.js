@@ -145,7 +145,7 @@ function renderQueueMarkup(list) {
 }
 
 // Library
-
+const tui = document.querySelector('.pagination-thumb')
 
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
@@ -156,8 +156,6 @@ if (watchedLibrary.length === 0 && queueLibrary.length === 0){
     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
-    
-    const tui = document.querySelector('.pagination-thumb')
     tui.classList.add('is-hidden')
   } else {
     addWatchFilm();
@@ -169,13 +167,13 @@ if (watchedLibrary.length === 0 && queueLibrary.length === 0){
 refs.watchedBtn.addEventListener('click', addWatchFilm)
 
 function addWatchFilm (){
+
   if (watchedLibrary.length === 0){
     console.log(watchedLibrary.length) 
     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
     
-    const tui = document.querySelector('.pagination-thumb')
     tui.classList.add('is-hidden')
   } else  {
 refs.gallery.classList.remove('picture');
@@ -188,6 +186,7 @@ tui.classList.add('is-hidden')
 
 refs.queueBtn.addEventListener('click', addQueueFilm)
 
+
 function addQueueFilm(){
   if (queueLibrary.length === 0){
     console.log(queueLibrary.length)
@@ -196,7 +195,6 @@ function addQueueFilm(){
       refs.gallery.innerHTML = '';
       refs.gallery.classList.add('picture');
       
-      const tui = document.querySelector('.pagination-thumb')
       tui.classList.add('is-hidden')
     } else {
       refs.gallery.classList.remove('picture');
