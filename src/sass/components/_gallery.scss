@@ -28,8 +28,8 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    margin: -15px;
-  }
+    margin: -15px;    
+  }  
 }
 
 .gallery-item {
@@ -39,19 +39,18 @@
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
   }
 
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
-    }
+    }    
   }
 
   @media screen and (min-width: $tablet) {
     max-width: 294px;
-
     width: calc((100% - 4 * 15px) / 2);
     margin: 15px;
   }
