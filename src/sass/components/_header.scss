@@ -8,6 +8,13 @@
     background: $background-color;
     background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/home-bg-new.jpg);
 
+    @media screen and  (min-width: 768px){
+        padding-left: 55px;
+    padding-right: 55px;
+    }
+  
+        
+    
 &.library-bg{
     background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/library-bg.jpg);
 }
