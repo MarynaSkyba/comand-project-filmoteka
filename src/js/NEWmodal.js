@@ -22,14 +22,16 @@ refs.gallery.addEventListener('click', onPosterDivClick);
     
     try {
 
+   
     modalDiv.innerHTML = modalMarkup;
 
     modalDiv.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-
+ const modalBackdrop = document.querySelector('.modal__backdrop');
     const closeButton = document.querySelector('[data-action="close-modal"]');
 
       closeButton.addEventListener('click', modalClosing);
+       modalBackdrop.addEventListener('click', modalClosing);
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
       console.error('Oops something go wrong' + error);

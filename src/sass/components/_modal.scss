@@ -37,8 +37,9 @@
   font-size: 14px;
   line-height: 1.14;
   color: $footer-text-color;
+
   max-height: 100vh;
-  width: 280px;
+  max-width: 280px;
   padding: 48px 20px 41px 20px;
 
   @media screen and (min-width: $tablet) and (max-width: $desktop) {
@@ -200,6 +201,6 @@
   line-height: 1.6;
   margin-bottom: 21px;
 }
-.animate__flipInX {
-  --animate-duration: 2s;
-}
+//.animate__flipInX {
+// --animate-duration: s;
+//}
