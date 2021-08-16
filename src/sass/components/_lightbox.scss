@@ -31,8 +31,24 @@
   z-index: 12;
   display: block;
   // border: 3px solid red;
-  height: 500px;
-  width: 600px;
+  // height: 500px;
+  // width: 600px;
+}
+
+iframe {
+  width: 250px;
+  height: 200px;
+
+  @media screen and (min-width: $tablet) {
+    width: 450px;
+    height: 300px;    
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 600px;
+    height: 360px;    
+  }
+
 }
 
 .lightbox__button {
