@@ -1,25 +1,40 @@
 {{#each this}}
-<li class="gallery-item">
-<div class="photo-card">
-    
-        <div class="thumb">
-            <img src="https://www.themoviedb.org/t/p/w300{{poster_path}}" loading="lazy" data-movie-id="{{id}}"/>
-        </div>
-        <p class="title">
+  <li class='gallery-item'>
+    <div class='photo-card'>
+
+      <div class='thumb'>
+        <img
+          src='https://www.themoviedb.org/t/p/w300{{poster_path}}'
+          loading='lazy'
+          data-movie-id='{{id}}'
+        />
+      </div>
+      <!--  <p class="title">
             {{title}}
+        </p>-->
+    <div class="card-wrap">
+      {{#if title}}
+        <p class='card-title'>{{title}}</p>
+      {{else}}<p class='card-text'>Unknow</p>
+      {{/if}}
+
+      <div class='card-data'>
+        <p class='card-genre card-text'>
+          {{genres}}
         </p>
-        <div class="info">
-          
-            <p class="info-item">
-               {{vote_average}}
-            </p>
-            <p class="info-item">
-                {{release_date}}
-            </p>
-            <p class="film-genre">
-                {{genres}}
-            </p>
-        </div>
-           
-</div></li>
+        <!-- <p class="info-item">
+            {{release_date}}
+        </p>-->
+
+        {{#if release_date}}
+          <p class='card-year card-text'> | {{release_date}}</p>
+        {{else}}<p class='card-text'> | N/A</p>
+        {{/if}}
+        <p class='film-vote'>
+          {{vote_average}}
+        </p>
+
+      </div>
+    </div>
+    </div></li>
 {{/each}}
