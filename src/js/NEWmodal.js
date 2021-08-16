@@ -41,8 +41,11 @@ refs.gallery.addEventListener('click', onPosterDivClick);
 // Закрытие модалки
 function modalClosing() {
   modalDiv.classList.remove('is-open');
+
   document.body.style.overflow = '';
   window.removeEventListener('keydown', modalClosinByEsc);
+  
+
 }
 
 // Закрытие модалки по Escape
@@ -70,77 +73,26 @@ function openModal(movieId) {
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
 
-    const trailerBtn = document.querySelector('.btn__trailer');
-watchedBtnM.addEventListener('click', () => {
-      currentMovieW = response
-         let watchedStorage = JSON.parse(localStorage.getItem('watched'))
-      if (!watchedStorage) {
-        watchedStorage = []
-      }
-       for (const film of watchedLibrary){
+   currentMovieW = response
+    watchedBtnM.addEventListener('click', onWatchedbtnClick)
+    currentMovieQ = response
+    queueBtnM.addEventListener('click', onQueuebtnClick)
+   
+    for (const film of JSON.parse(localStorage.getItem('watched'))){
          if (film.title === response.title) {
-          //  watchedBtnM.disabled = true
            watchedBtnM.textContent = 'DELETE FROM WATCHED'
-          Notiflix.Notify.failure('Oops, you already have this movie in watched');
-           console.log(watchedLibrary)
-           return
-        
-      } 
-      }
-      for (const film of queueLibrary){
-         if (film.title === currentMovieW.title) {
-          //  watchedBtnM.disabled = true
-          //  watchedBtnM.textContent = 'DELETE FROM QUEUE'
-          Notiflix.Notify.failure('Oops, you already have this movie in queue');
-           return
-        
-      } 
-      }
-      
-      watchedStorage.push(response)
-      localStorage.setItem('watched', JSON.stringify(watchedStorage))
-        Notiflix.Notify.success('The movie was successfully added to the library');
-     watchedBtnM.disabled = true
-           watchedBtnM.textContent = 'DELETE FROM WATCHED'
-      watchedLibrary = [...watchedStorage]
-       console.log(watchedLibrary)
-        
-    })
     
-    queueBtnM.addEventListener('click', () => {
-      currentMovieQ = response
-         
-      let queueStorage = JSON.parse(localStorage.getItem('queue'))
-      if (!queueStorage) {
-       queueStorage = []
-      }
-       for (const film of queueLibrary){
+           
+                   return
+        } 
+    }
+    for (const film of JSON.parse(localStorage.getItem('queue'))){
          if (film.title === response.title) {
-           queueBtnM.textContent = 'DELETE FROM QUEUE'
-          Notiflix.Notify.failure('Oops, you already have this movie in queue');
-           return
-        
-      } 
-      }
-      for (const film of watchedLibrary){
-         if (film.title === currentMovieQ.title) {
-          // 
-          //  queueBtnM.textContent = 'DELETE FROM WATCHED'
-          Notiflix.Notify.failure('Oops, you already have this movie in watched');
-           return
-        
-      } 
-      }
-      
-      queueStorage.push(response)
-      localStorage.setItem('queue', JSON.stringify(queueStorage))
-        Notiflix.Notify.success('The movie was successfully added to the library');
-     queueBtnM.disabled = true
-           queueBtnM.textContent = 'DELETE FROM QUEUE'
-      queueLibrary = [...queueStorage]
-      
-        
-    })
+               queueBtnM.textContent = 'DELETE FROM QUEUE'
+                   return
+        } 
+    }
+     
   }
   )
   .catch (error =>
@@ -163,6 +115,7 @@ function renderWatchedMarkup(list) {
     refs.gallery.classList.add('picture');
     
     tui.classList.add('is-hidden')
+    // initLocalStorage()
     return
   } 
  
@@ -171,10 +124,11 @@ function renderWatchedMarkup(list) {
   
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
    refs.gallery.classList.remove('picture');
-    // refs.queueBtn.disabled = false
+ 
   
 }
- refs.queueBtn.addEventListener('click',renderQueueMarkup)
+refs.queueBtn.addEventListener('click', renderQueueMarkup)
+ 
 function renderQueueMarkup(list) {
 
   list = JSON.parse(localStorage.getItem('queue')) || []
@@ -195,21 +149,114 @@ function renderQueueMarkup(list) {
 }
 
 
+
+
+
+function onWatchedbtnClick() {
+   const watchedBtnM = document.querySelector('.btn__watch')
+
+   let watchedStorage = JSON.parse(localStorage.getItem('watched'))
+      if (!watchedStorage) {
+        watchedStorage = []
+  }
+  if (watchedBtnM.textContent ==='DELETE FROM WATCHED') {
+    const movieToRemove = currentMovieW.id
+    deleteMovie('watched', movieToRemove)
+  
+    Notiflix.Notify.success('The movie was successfully deleted from the library');
+    watchedBtnM.textContent = 'ADD TO WATCHED'
+  
+    return
+       
+  }
+  
+
+  
+  for (const film of JSON.parse(localStorage.getItem('queue'))) {
+  
+         if (film.title === currentMovieW.title) {
+         
+          Notiflix.Notify.failure('Oops, you already have this movie in queue');
+           return
+        
+      } 
+  }
+        
+      watchedStorage.push(currentMovieW)
+      localStorage.setItem('watched', JSON.stringify(watchedStorage))
+        Notiflix.Notify.success('The movie was successfully added to the library');
+   
+  watchedBtnM.textContent = 'DELETE FROM WATCHED'
+       watchedLibrary = [...watchedStorage]
+             
+    
+}
+
+function onQueuebtnClick() {
+  const queueBtnM = document.querySelector('.btn__queue')
+  let queueStorage = JSON.parse(localStorage.getItem('queue'))
+      if (!queueStorage) {
+       queueStorage = []
+  }
+  if (queueBtnM.textContent ==='DELETE FROM QUEUE') {
+    const movieToRemove = currentMovieQ.id
+    deleteMovie('queue', movieToRemove)
+    Notiflix.Notify.success('The movie was successfully deleted from the library');
+    queueBtnM.textContent = 'ADD TO QUEUE'
+
+    
+    return
+    
+       
+  }
+    let  watchedLS = JSON.parse(localStorage.getItem('watched'))  
+  for (const film of watchedLS ) {
+
+         if (film.title === currentMovieQ.title) {
+                   Notiflix.Notify.failure('Oops, you already have this movie in watched');
+            console.log(film.title)
+           return
+          
+        
+      } 
+      }
+      
+      queueStorage.push(currentMovieQ)
+      localStorage.setItem('queue', JSON.stringify(queueStorage))
+        Notiflix.Notify.success('The movie was successfully added to the library');
+  
+           queueBtnM.textContent = 'DELETE FROM QUEUE'
+      queueLibrary = [...queueStorage]
+      
+        
+    
+}
+
+function deleteMovie(key, id) {
+  let containerLS = []
+  containerLS=JSON.parse(localStorage.getItem(key))
+
+   const resultFilms = containerLS.filter((item) => item.id !== id);
+  localStorage.setItem(key, JSON.stringify(resultFilms));
+
+}
 // Library
 
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
 function onLibraryClick() {
+
   watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
   queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
-  
+
 if (watchedLibrary.length === 0 && queueLibrary.length === 0){
  
     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.classList.add('picture');
     refs.gallery.innerHTML = '';
     tui.classList.add('is-hidden')
-  } else {
+}  
+else {
     library = [...watchedLibrary, ...queueLibrary];
   refs.gallery.innerHTML = '';
      refs.gallery.classList.remove('picture');
@@ -217,4 +264,6 @@ refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
   tui.classList.add('is-hidden')
 
   }
+    
+  
 }
