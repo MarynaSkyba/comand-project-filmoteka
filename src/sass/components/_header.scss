@@ -9,8 +9,9 @@
     background-image: linear-gradient(rgba(0,0,0,.56),rgba(0,0,0,.56)), url(../images/home-bg-new.jpg);
 
     @media screen and  (min-width: 768px){
-        padding-left: 55px;
+    padding-left: 55px;
     padding-right: 55px;
+    background-size: cover;
     }
   
         
@@ -35,18 +36,7 @@
     
 }
 
-.logo-text {
-margin-left: 40px;
-font-weight: 500;
-font-size: 30px;
-line-height: 35px;
-color: $white-color;
 
-@media screen and (max-width: 767px) {
-    display: none;
-}
-
-}
 
 
 .icon-film{
@@ -158,7 +148,7 @@ padding-bottom: 60px;
 .nav-btn{
 display: flex;
 justify-content: center;
-padding-top: 20px;
+padding-top: 30px;
 padding-bottom: 50px;
 }
 
@@ -199,3 +189,42 @@ padding-bottom: 50px;
 }
 
 
+  
+  .btn-shine {
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%,-50%);
+  padding: 12px 48px;
+  margin-left: 115px;
+  color: #ffffff;
+  background: linear-gradient(to right, #4d4d4d 0, white 10%, #868686 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 30px;
+  text-decoration: none;
+  white-space: nowrap;
+  
+}
+@keyframes shine {
+  0% {background-position: 0}
+  60% {
+    background-position: 180px}
+  100%{
+    background-position: 180px;
+}}
+
+.logo-text {
+
+    
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+    
+    }
