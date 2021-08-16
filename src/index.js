@@ -8,7 +8,8 @@ import './js/modal-team';
 
 import './js/theme';
 
-import './js/chage-btn'
+import './js/chage-btn';
+import './js/trailer';
 
 
 // import templateCard from './template/tmp-card.hbs';

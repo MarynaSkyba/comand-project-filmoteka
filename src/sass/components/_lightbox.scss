@@ -27,6 +27,14 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.lightbox__content {
+  z-index: 12;
+  display: block;
+  // border: 3px solid red;
+  height: 500px;
+  width: 600px;
+}
+
 .lightbox__button {
   position: absolute;
   z-index: 3;

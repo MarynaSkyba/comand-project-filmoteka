@@ -141,19 +141,6 @@ watchedBtnM.addEventListener('click', () => {
       
         
     })
-   
-
-    
-    trailerBtn.addEventListener('click', openLightbox);
-
-    function openLightbox() {
-      refs.lightbox.classList.add('is-open');     
-    }
-
-    refs.closeLightboxBtn.addEventListener('click', onCloseLightbox);
-    function onCloseLightbox() {
-      refs.lightbox.classList.remove('is-open');
-    }    
   }
   )
   .catch (error =>
