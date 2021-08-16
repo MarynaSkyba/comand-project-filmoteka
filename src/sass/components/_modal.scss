@@ -45,7 +45,7 @@
   @media screen and (min-width: $tablet) and (max-width: $desktop) {
     display: flex;
     margin: auto;
-  max-width: 618px;
+    max-width: 618px;
     max-height: 562px;
     padding: 80px 29px 40px 28px;
   }
@@ -59,6 +59,10 @@
 
 .film__button__wrapper {
   display: flex;
+  justify-content: center;
+}
+.btn__queue {
+  margin-right: 0px;
 }
 
 .film__button {
@@ -121,6 +125,12 @@
     height: 30px;
     top: 1.3%;
   }
+}
+.btn__trailer {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image {
