@@ -15,6 +15,7 @@
 .tui-pagination {
     margin-top: -2px;
     height: 40px; 
+
 }
 
 .tui-pagination .tui-page-btn {  
@@ -27,6 +28,13 @@
     line-height: 1.33;
     
     border: 1px solid white;
+
+    body.dark-theme & {
+        background-color:$accent-color;
+        border: none;
+        border-radius: 3px;
+ }
+    
 }
 
 .tui-pagination .tui-page-btn:not(:last-child) {
@@ -48,14 +56,19 @@
     &:focus {
         background-color: $accent-color;
     }
+
+    
 }
 
 .tui-pagination .tui-first-child.tui-is-selected {
     border-left: 1px solid $accent-color;
+
 }
 
 .tui-pagination .tui-last-child.tui-is-selected {
     border-right: 1px solid $accent-color;
+
+   
 }
 
 .tui-pagination .tui-ico-ellip {
