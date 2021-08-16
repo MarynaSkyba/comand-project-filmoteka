@@ -28,8 +28,8 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    margin: -15px;    
-  }  
+    margin: -15px;
+  }
 }
 
 .gallery-item {
@@ -46,7 +46,7 @@
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
-    }    
+    }
   }
 
   @media screen and (min-width: $tablet) {
@@ -63,5 +63,46 @@
 
 .thumb img {
   width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+//style for card
+.card-wrap {
+  font-family: $primary-font-family;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+}
+.card-title {
+  color: $title-text-color;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card-text {
+  color: $accent-color;
+}
+
+.card-data {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-genre {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-right: 5px;
+}
+
+.card-year {
+  margin-right: 5px;
+}
+
+.film-vote {
+  margin-left: 10px;
+  color: white;
+  background-color: #ff6b01;
+  padding: 1px 6px;
   border-radius: 5px;
 }
