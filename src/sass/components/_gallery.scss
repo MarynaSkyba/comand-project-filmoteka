@@ -78,6 +78,10 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
+
+  body.dark-theme & {
+    color: white;
+ }
 }
 
 .card-text {
