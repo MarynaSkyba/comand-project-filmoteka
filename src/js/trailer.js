@@ -12,8 +12,6 @@ function generateUrl(path) {
 function createIframe(video) {
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube.com/embed/${video.key}`;
-    iframe.width = 600;
-    iframe.height = 500;
     iframe.allowFullscreen = true;
 
     return iframe;
@@ -62,10 +60,30 @@ function openLightbox(event) {
     }          
 }
     
-
-
+// Закрытие модального окна 
 refs.closeLightboxBtn.addEventListener('click', onCloseLightbox);
     
-    function onCloseLightbox() {
-      refs.lightbox.classList.remove('is-open');
+function onCloseLightbox() {
+    refs.lightbox.classList.remove('is-open');
+    window.removeEventListener('keydown', onEscKeyPress);
+    
 }
+//по нажатию клавиши ESC
+
+function onEscKeyPress(evt) {
+    if (evt.code === 'Escape') {
+     onCloseLightbox();   
+    }    
+}
+
+//по клику на div.lightbox__overlay.
+refs.lightbox.addEventListener('click', clickOnLightbox);
+
+function clickOnLightbox(evt) {
+  if (evt.target !== refs.lightboxImage) {
+        onCloseLightbox();
+    }    
+}
+
+
+
