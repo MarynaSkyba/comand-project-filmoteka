@@ -4,7 +4,10 @@ import QueryService from './query-service';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import '../../node_modules/spin.js/spin.css';
-import {target, spinner}  from './spinner.js'
+import {target, spinner}  from './spinner.js';
+import movieButtons from './overlay-btn';
+
+
 const refs = getRefs();
 const queryService = new QueryService();
 const options = {
@@ -58,6 +61,8 @@ queryService.fetchDate(page).then(response => {
     pagination.reset(response[1].total_pages);
     renderMoveGallery(response);
     console.log(response);
+    const li =  document.querySelectorAll('.gallery-item');
+    movieButtons(li, response);
     spinner.stop();
  });
 

@@ -1,0 +1,68 @@
+.button {
+    width: 130px;
+    height: 45px;
+    color: $white-color;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    outline: none;
+    border-radius: 5px;
+    user-select: none;
+    background: transparent;
+    border: 1px solid $white-color;
+  }
+  .button:hover {
+    border: 1px solid $accent-color;
+    box-shadow: inset 1px 1px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+  }
+  .button-active {
+    background: $accent-color;
+    border: 1px solid $accent-color;
+    box-shadow: inset 5px 5px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+  }
+
+  .film-overlay {
+    width: 280px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    );
+    position: absolute;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: show;
+    user-select: none;
+    pointer-events: none;
+  }
+  .film-overlay .button:first-child {
+    margin-bottom: 15px;
+  }
+  .film-overlay .button {
+    pointer-events: all;
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .film-overlay {
+        width: 294px;
+        height: 441px;
+
+    }
+    @media screen and (min-width: 1024px){
+        .film-overlay {
+            width: 274px;
+            height: 411px;
+
+        }
+    }
+  
+  }
