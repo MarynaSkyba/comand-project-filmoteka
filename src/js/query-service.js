@@ -43,6 +43,7 @@ export default class QueryService {
                             ? response.data.release_date.slice(0, 4)
                             : response.data.release_date,
             genres: this.filterGenresModal(genres),
+            popularity: response.data.popularity.toFixed(1),
         };
     }
     async fetchSearch(page) {

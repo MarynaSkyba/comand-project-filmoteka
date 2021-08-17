@@ -5,7 +5,8 @@ import Notiflix from "notiflix";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import '../../node_modules/spin.js/spin.css';
-import {target, spinner}  from './spinner.js'
+import { target, spinner } from './spinner.js'
+import movieButtons from './overlay-btn';
 
 const refs = getRefs();
 
@@ -46,11 +47,16 @@ async function onSearch(e) {
   e.preventDefault();
   spinner.spin(target);
   filmsApiService.query = e.currentTarget.elements.searchQuery.value;
-  console.log(filmsApiService.query)
 
   try{
     
     if (filmsApiService.query.trim() === '') {
+    filmsApiService.fetchDate(page).then(response => {
+    renderMovieCards(response);
+    const li =  document.querySelectorAll('.gallery-item');
+      movieButtons(li, response);
+       spinner.stop();
+ });
       spinner.stop();
       clearInput();
     Notiflix.Notify.failure('Oops, there are no movies with that name');
