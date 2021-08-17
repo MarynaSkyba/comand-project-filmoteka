@@ -39,7 +39,6 @@
 
   &:hover,
   &:focus {
-  
     transform: scale(1.05);
     box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
   }
@@ -73,6 +72,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: calc(16 / 12);
+  padding: 0px 5px 10px;
 }
 .card-title {
   color: $title-text-color;
@@ -82,7 +82,7 @@
 
   body.dark-theme & {
     color: white;
- }
+  }
 }
 
 .card-text {
@@ -91,7 +91,8 @@
 
 .card-data {
   display: flex;
-  flex-wrap: wrap;
+
+  align-items: center;
 }
 
 .card-genre {
