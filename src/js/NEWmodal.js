@@ -78,7 +78,7 @@ function openModal(movieId) {
     currentMovieQ = response
     queueBtnM.addEventListener('click', onQueuebtnClick)
    
-    for (const film of JSON.parse(localStorage.getItem('watched'))){
+    for (const film of JSON.parse(localStorage.getItem('watched'))|| []){
          if (film.title === response.title) {
            watchedBtnM.textContent = 'DELETE FROM WATCHED'
     
@@ -98,7 +98,7 @@ function openModal(movieId) {
   .catch (error =>
   {
     if (error = 404) {
-      Notiflix.Notify.failure('Sorry this movie temporary not available')
+      // Notiflix.Notify.failure('Sorry this movie temporary not available')
      } }
    )
 
@@ -155,7 +155,7 @@ function renderQueueMarkup(list) {
 function onWatchedbtnClick() {
    const watchedBtnM = document.querySelector('.btn__watch')
 
-   let watchedStorage = JSON.parse(localStorage.getItem('watched'))
+   let watchedStorage = JSON.parse(localStorage.getItem('watched'))|| []
       if (!watchedStorage) {
         watchedStorage = []
   }
@@ -171,8 +171,8 @@ function onWatchedbtnClick() {
   }
   
 
-  
-  for (const film of JSON.parse(localStorage.getItem('queue'))) {
+  let watcheLS = JSON.parse(localStorage.getItem('queue'))|| []
+  for (const film of watcheLS) {
   
          if (film.title === currentMovieW.title) {
          
@@ -209,12 +209,11 @@ function onQueuebtnClick() {
     
        
   }
-    let  watchedLS = JSON.parse(localStorage.getItem('watched'))  
+    let  watchedLS = JSON.parse(localStorage.getItem('watched')) || [] 
   for (const film of watchedLS ) {
 
          if (film.title === currentMovieQ.title) {
                    Notiflix.Notify.failure('Oops, you already have this movie in watched');
-            console.log(film.title)
            return
           
         
