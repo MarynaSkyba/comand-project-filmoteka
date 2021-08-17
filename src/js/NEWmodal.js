@@ -80,7 +80,8 @@ function openModal(movieId) {
     currentMovieQ = response
     queueBtnM.addEventListener('click', onQueuebtnClick)
     watchedLS = JSON.parse(localStorage.getItem('watched'))|| []
-   queueLS = JSON.parse(localStorage.getItem('queue'))|| []
+    queueLS = JSON.parse(localStorage.getItem('queue')) || []
+   
     for (const film of watchedLS){
          if (film.title === response.title) {
            watchedBtnM.textContent = 'DELETE FROM WATCHED'
@@ -108,8 +109,10 @@ function openModal(movieId) {
 
 refs.watchedBtn.addEventListener('click',renderWatchedMarkup)
 function renderWatchedMarkup(list) {
+  localStorage.setItem('isWatched', JSON.stringify(true));
+  localStorage.setItem('isQueue', JSON.stringify(false));
   list = JSON.parse(localStorage.getItem('watched')) || []
-   
+  
   if (list.length === 0) {
    
     Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
@@ -117,7 +120,7 @@ function renderWatchedMarkup(list) {
     refs.gallery.classList.add('picture');
     
     tui.classList.add('is-hidden')
-    // initLocalStorage()
+
     return
   } 
  
@@ -132,7 +135,8 @@ function renderWatchedMarkup(list) {
 refs.queueBtn.addEventListener('click', renderQueueMarkup)
  
 function renderQueueMarkup(list) {
-
+  localStorage.setItem('isQueue', JSON.stringify(true));
+  localStorage.setItem('isWatched', JSON.stringify(false));
   list = JSON.parse(localStorage.getItem('queue')) || []
   if (list.length === 0){
   
@@ -150,7 +154,7 @@ function renderQueueMarkup(list) {
    refs.gallery.classList.remove('picture');
 }
 
-
+ localStorage.setItem('isLibrary', JSON.stringify(false));
 
 
 
@@ -164,10 +168,11 @@ function onWatchedbtnClick() {
   if (watchedBtnM.textContent ==='DELETE FROM WATCHED') {
     const movieToRemove = currentMovieW.id
     deleteMovie('watched', movieToRemove)
+     updateWatchedPage()
   
     Notiflix.Notify.success('The movie was successfully deleted from the library');
     watchedBtnM.textContent = 'ADD TO WATCHED'
-  
+ 
     return
        
   }
@@ -196,6 +201,7 @@ function onWatchedbtnClick() {
 
 function onQueuebtnClick() {
   const queueBtnM = document.querySelector('.btn__queue')
+
   let queueStorage = JSON.parse(localStorage.getItem('queue'))
       if (!queueStorage) {
        queueStorage = []
@@ -203,6 +209,7 @@ function onQueuebtnClick() {
   if (queueBtnM.textContent ==='DELETE FROM QUEUE') {
     const movieToRemove = currentMovieQ.id
     deleteMovie('queue', movieToRemove)
+    updateQueuePage()
     Notiflix.Notify.success('The movie was successfully deleted from the library');
     queueBtnM.textContent = 'ADD TO QUEUE'
 
@@ -244,6 +251,7 @@ function deleteMovie(key, id) {
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
 function onLibraryClick() {
+localStorage.setItem('isLibrary', JSON.stringify(true));
 
   watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
   queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
@@ -265,4 +273,39 @@ refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
   }
     
   
+}
+
+
+function updateWatchedPage() {
+  if (JSON.parse(localStorage.getItem('isWatched')) === true && JSON.parse(localStorage.getItem('isLibrary')) ===true && JSON.parse(localStorage.getItem('isQueue')) ===false) {
+    renderWatchedMarkup()
+ 
+    
+  } else
+  if (JSON.parse(localStorage.getItem('isLibrary')) === true) {
+        updateLibrary()
+    
+    } 
+      
+      
+}
+
+function updateQueuePage() {
+  if (JSON.parse(localStorage.getItem('isQueue')) === true && JSON.parse(localStorage.getItem('isLibrary')) ===true && JSON.parse(localStorage.getItem('isWatched')) ===false) {
+    renderQueueMarkup()
+
+    } else
+  if (JSON.parse(localStorage.getItem('isLibrary')) === true) {
+    updateLibrary()
+  
+    } 
+}
+
+function updateLibrary() {
+ watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
+  queueLibrary = JSON.parse(localStorage.getItem('queue')) || []  
+library = [...watchedLibrary, ...queueLibrary];
+  refs.gallery.innerHTML = '';
+refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
+
 }
