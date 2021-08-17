@@ -66,9 +66,11 @@ function onPosterDivClick(e) {
 // Открытие м.о
 let currentMovieW
 let currentMovieQ
+let queueLS
+let watchedLS
 function openModal(movieId) {
-  
-  modalApiFetch.fetchByIdModal(movieId).then(response => {
+  try
+  {modalApiFetch.fetchByIdModal(movieId).then(response => {
     renderMovieModal(response)
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
@@ -77,8 +79,9 @@ function openModal(movieId) {
     watchedBtnM.addEventListener('click', onWatchedbtnClick)
     currentMovieQ = response
     queueBtnM.addEventListener('click', onQueuebtnClick)
-   
-    for (const film of JSON.parse(localStorage.getItem('watched'))|| []){
+    watchedLS = JSON.parse(localStorage.getItem('watched'))|| []
+   queueLS = JSON.parse(localStorage.getItem('queue'))|| []
+    for (const film of watchedLS){
          if (film.title === response.title) {
            watchedBtnM.textContent = 'DELETE FROM WATCHED'
     
@@ -86,7 +89,7 @@ function openModal(movieId) {
                    return
         } 
     }
-    for (const film of JSON.parse(localStorage.getItem('queue'))){
+    for (const film of queueLS){
          if (film.title === response.title) {
                queueBtnM.textContent = 'DELETE FROM QUEUE'
                    return
@@ -94,13 +97,12 @@ function openModal(movieId) {
     }
      
   }
-  )
-  .catch (error =>
-  {
-    if (error = 404) {
-      // Notiflix.Notify.failure('Sorry this movie temporary not available')
-     } }
-   )
+  )}
+  catch (error) {
+    Notiflix.Notify.failure('Sorry this movie temporary not available')
+    console.error(error);
+    
+  }
 
 }
 
@@ -171,8 +173,8 @@ function onWatchedbtnClick() {
   }
   
 
-  let watcheLS = JSON.parse(localStorage.getItem('queue'))|| []
-  for (const film of watcheLS) {
+  queueLS = JSON.parse(localStorage.getItem('queue'))|| []
+  for (const film of queueLS ) {
   
          if (film.title === currentMovieW.title) {
          
@@ -204,12 +206,10 @@ function onQueuebtnClick() {
     Notiflix.Notify.success('The movie was successfully deleted from the library');
     queueBtnM.textContent = 'ADD TO QUEUE'
 
-    
     return
-    
        
   }
-    let  watchedLS = JSON.parse(localStorage.getItem('watched')) || [] 
+    watchedLS = JSON.parse(localStorage.getItem('watched')) || [] 
   for (const film of watchedLS ) {
 
          if (film.title === currentMovieQ.title) {
