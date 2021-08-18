@@ -35,7 +35,7 @@ const options = {
             '</a>'
     }
 };
-
+export { options };
 const pagination = new Pagination('#tui-pagination-container', options);
 const page = pagination.getCurrentPage();
 spinner.spin(target);

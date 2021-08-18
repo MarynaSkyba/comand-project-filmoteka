@@ -3,11 +3,15 @@ import getRefs from './refs';
 import Notiflix from "notiflix";
 import QueryService from  './query-service';
 import moviesCard from '../template/tmp-card.hbs';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { options } from './pagination';
 const modalDiv=document.getElementById('modal')
 const refs = getRefs();
 const modalApiFetch = new QueryService();
 const tui = document.querySelector('.pagination-thumb')
-
+const pagination = new Pagination('#tui-pagination-container', options);
+const page = pagination.getCurrentPage();
 
 let library = [];
 let watchedLibrary = [];
@@ -160,7 +164,7 @@ function renderQueueMarkup(list) {
 
 function onWatchedbtnClick() {
    const watchedBtnM = document.querySelector('.btn__watch')
-
+ pagination.reset();
    let watchedStorage = JSON.parse(localStorage.getItem('watched'))|| []
       if (!watchedStorage) {
         watchedStorage = []
@@ -172,7 +176,7 @@ function onWatchedbtnClick() {
   
     Notiflix.Notify.success('The movie was successfully deleted from the library');
     watchedBtnM.textContent = 'ADD TO WATCHED'
- 
+    pagination.reset(1);
     return
        
   }
@@ -251,6 +255,7 @@ function deleteMovie(key, id) {
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
 function onLibraryClick() {
+    pagination.reset();
 localStorage.setItem('isLibrary', JSON.stringify(true));
 
   watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
@@ -268,7 +273,7 @@ else {
   refs.gallery.innerHTML = '';
      refs.gallery.classList.remove('picture');
 refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
-  tui.classList.add('is-hidden')
+
 
   }
     
@@ -286,8 +291,7 @@ function updateWatchedPage() {
         updateLibrary()
     
     } 
-      
-      
+         
 }
 
 function updateQueuePage() {
@@ -302,10 +306,10 @@ function updateQueuePage() {
 }
 
 function updateLibrary() {
- watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
-  queueLibrary = JSON.parse(localStorage.getItem('queue')) || []  
+watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
+queueLibrary = JSON.parse(localStorage.getItem('queue')) || []  
 library = [...watchedLibrary, ...queueLibrary];
-  refs.gallery.innerHTML = '';
+refs.gallery.innerHTML = '';
 refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
 
 }
