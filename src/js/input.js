@@ -41,6 +41,7 @@ const paginationInput = new Pagination('#tui-pagination-container', options);
 const page = paginationInput.getCurrentPage();
 const filmsApiService = new QueryService();
 
+
 refs.searchForm.addEventListener('submit', onSearch);
  
 async function onSearch(e) {
@@ -53,8 +54,6 @@ async function onSearch(e) {
     if (filmsApiService.query.trim() === '') {
     filmsApiService.fetchDate(page).then(response => {
     renderMovieCards(response);
-    const li =  document.querySelectorAll('.gallery-item');
-      movieButtons(li, response);
        spinner.stop();
  });
       spinner.stop();
@@ -66,6 +65,8 @@ async function onSearch(e) {
   clearInput()
   paginationInput.reset(result[1].total_pages);
       renderMovieCards(result);
+      const li =  document.querySelectorAll('.gallery-item');
+      movieButtons(li, result);
       spinner.stop();
   }}
   
@@ -82,6 +83,8 @@ paginationInput.on('afterMove', (event) => {
   filmsApiService.fetchSearch(currentPage).then(results => {
       clearInput()
         renderMovieCards(results);
+        const li =  document.querySelectorAll('.gallery-item');
+        movieButtons(li, results);
     } )
 });
 
