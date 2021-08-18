@@ -60,9 +60,9 @@ spinner.spin(target);
 queryService.fetchDate(page).then(response => {
     pagination.reset(response[1].total_pages);
     renderMoveGallery(response);
-    console.log(response);
     const li =  document.querySelectorAll('.gallery-item');
     movieButtons(li, response);
+    console.log(response);
     spinner.stop();
  });
 
@@ -72,11 +72,14 @@ pagination.on('afterMove', (event) => {
     clearGallery();
     queryService.fetchDate(currentPage).then(response => {
         renderMoveGallery(response);
+        const li =  document.querySelectorAll('.gallery-item');
+        movieButtons(li, response);
         spinner.stop();
     } )
 });
  function renderMoveGallery(data) {
     refs.gallery.insertAdjacentHTML('beforeend', templateCard(data));
+  
 }
 
 function clearGallery() {

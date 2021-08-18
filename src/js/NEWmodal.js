@@ -6,6 +6,8 @@ import moviesCard from '../template/tmp-card.hbs';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './pagination';
+import movieButtons from './overlay-btn';
+
 const modalDiv=document.getElementById('modal')
 const refs = getRefs();
 const modalApiFetch = new QueryService();
@@ -28,7 +30,7 @@ refs.gallery.addEventListener('click', onPosterDivClick);
 
    
     modalDiv.innerHTML = modalMarkup;
-
+    
     modalDiv.classList.add('is-open');
     document.body.style.overflow = 'hidden';
  const modalBackdrop = document.querySelector('.modal__backdrop');
@@ -76,6 +78,8 @@ function openModal(movieId) {
   try
   {modalApiFetch.fetchByIdModal(movieId).then(response => {
     renderMovieModal(response)
+    // const li =  document.querySelectorAll('.gallery-item');
+    // movieButtons(li, response);
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
 
@@ -271,9 +275,10 @@ if (watchedLibrary.length === 0 && queueLibrary.length === 0){
 else {
     library = [...watchedLibrary, ...queueLibrary];
   refs.gallery.innerHTML = '';
-     refs.gallery.classList.remove('picture');
-refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
-
+  refs.gallery.classList.remove('picture');
+  refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
+  
+  
 
   }
     
@@ -311,5 +316,6 @@ queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
 library = [...watchedLibrary, ...queueLibrary];
 refs.gallery.innerHTML = '';
 refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
+
 
 }
