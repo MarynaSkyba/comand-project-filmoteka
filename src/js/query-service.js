@@ -25,9 +25,9 @@ export default class QueryService {
                     }));
                 });
     };
-
-    async fetchById(path) {
-        const url = `${BASE_URL}${path}?api_key=${KEY_USER}`;
+    
+    async fetchById(movieID) {
+        const url = `${BASE_URL}/movie/${movieID}/videos?api_key=${KEY_USER}`;
         const response = await axios.get(url);
         return response.data;      
     }

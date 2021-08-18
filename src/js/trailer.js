@@ -4,23 +4,21 @@ import QueryService from './query-service';
 const refs = getRefs();
 const trailerApiFetch = new QueryService();
 
-
 function createIframe(video) {
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube.com/embed/${video.key}`;
     iframe.allowFullscreen = true;
-
+ 
     return iframe;
 }
-
+    
 function createVideoTemplate(data) {
-    const video = data.results[0];  
+    const video = data.results[0];
     const iframeContainer = document.querySelector('.lightbox__content');
     const iframe = createIframe(video);
     iframeContainer.innerHTML = '';
-    iframeContainer.appendChild(iframe);   
+    iframeContainer.appendChild(iframe);
 }
-
 
 document.addEventListener('click', openLightbox);
 
@@ -31,20 +29,17 @@ function openLightbox(event) {
         const movieID = target.dataset.movieId;
         // console.log(movieID);
 
-        const path = `/movie/${movieID}/videos`;
-        
-        trailerApiFetch.fetchById(path)
+        trailerApiFetch.fetchById(movieID)
             .then(data =>
                 createVideoTemplate(data))
             .catch((error) => {
             console.log(error);
-        })
-
+            })
     }
 
     if (target.classList.contains('btn__trailer')) {
         refs.lightbox.classList.add('is-open'); 
-    }          
+    }
 }
 
 //---------------------------------------------------------------------------------------
@@ -54,9 +49,10 @@ refs.closeLightboxBtn.addEventListener('click', onCloseLightbox);
     
 function onCloseLightbox() {
     refs.lightbox.classList.remove('is-open');
-    // iframeContainer.innerHTML = '';
-    window.removeEventListener('keydown', onEscKeyPress);    
+    document.body.style.overflow = 'visible';
+    // window.removeEventListener('keydown', onEscKeyPress);    
 }
+
 //по нажатию клавиши ESC
 
 function onEscKeyPress(evt) {
