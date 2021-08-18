@@ -28,16 +28,14 @@ refs.gallery.addEventListener('click', onPosterDivClick);
     
     try {
 
-   
     modalDiv.innerHTML = modalMarkup;
-    
     modalDiv.classList.add('is-open');
     document.body.style.overflow = 'hidden';
- const modalBackdrop = document.querySelector('.modal__backdrop');
+    const modalBackdrop = document.querySelector('.modal__backdrop');
     const closeButton = document.querySelector('[data-action="close-modal"]');
 
-      closeButton.addEventListener('click', modalClosing);
-       modalBackdrop.addEventListener('click', modalClosing);
+    closeButton.addEventListener('click', modalClosing);
+    modalBackdrop.addEventListener('click', modalClosing);
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
       console.error('Oops something go wrong' + error);
@@ -47,7 +45,6 @@ refs.gallery.addEventListener('click', onPosterDivClick);
 // Закрытие модалки
 function modalClosing() {
   modalDiv.classList.remove('is-open');
-
   document.body.style.overflow = '';
   window.removeEventListener('keydown', modalClosinByEsc);
   
@@ -78,8 +75,6 @@ function openModal(movieId) {
   try
   {modalApiFetch.fetchByIdModal(movieId).then(response => {
     renderMovieModal(response)
-    // const li =  document.querySelectorAll('.gallery-item');
-    // movieButtons(li, response);
     const watchedBtnM = document.querySelector('.btn__watch')
     const queueBtnM = document.querySelector('.btn__queue')
 
@@ -127,7 +122,7 @@ function renderWatchedMarkup(list) {
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
     
-    tui.classList.add('is-hidden')
+    // tui.classList.add('is-hidden')
 
     return
   } 
@@ -136,7 +131,9 @@ function renderWatchedMarkup(list) {
   refs.gallery.innerHTML = ''
   
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
-   refs.gallery.classList.remove('picture');
+  refs.gallery.classList.remove('picture');
+  const li =  document.querySelectorAll('.gallery-item');
+  movieButtons(li, list);
  
   
 }
@@ -147,7 +144,8 @@ function renderQueueMarkup(list) {
   localStorage.setItem('isWatched', JSON.stringify(false));
   list = JSON.parse(localStorage.getItem('queue')) || []
   if (list.length === 0){
-  
+   pagination.reset();
+
       Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
       refs.gallery.innerHTML = '';
       refs.gallery.classList.add('picture');
@@ -157,9 +155,11 @@ function renderQueueMarkup(list) {
   }
  
   refs.gallery.innerHTML = ''
-  
+  //  pagination.reset();
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
-   refs.gallery.classList.remove('picture');
+  const li =  document.querySelectorAll('.gallery-item');
+  movieButtons(li, list);
+  refs.gallery.classList.remove('picture');
 }
 
  localStorage.setItem('isLibrary', JSON.stringify(false));
@@ -196,7 +196,8 @@ function onWatchedbtnClick() {
         
       } 
   }
-        
+      
+
       watchedStorage.push(currentMovieW)
       localStorage.setItem('watched', JSON.stringify(watchedStorage))
         Notiflix.Notify.success('The movie was successfully added to the library');
@@ -237,9 +238,9 @@ function onQueuebtnClick() {
       
       queueStorage.push(currentMovieQ)
       localStorage.setItem('queue', JSON.stringify(queueStorage))
-        Notiflix.Notify.success('The movie was successfully added to the library');
+      Notiflix.Notify.success('The movie was successfully added to the library');
   
-           queueBtnM.textContent = 'DELETE FROM QUEUE'
+      queueBtnM.textContent = 'DELETE FROM QUEUE'
       queueLibrary = [...queueStorage]
       
         
@@ -259,27 +260,27 @@ function deleteMovie(key, id) {
 refs.libraryBtn.addEventListener('click', onLibraryClick)
   
 function onLibraryClick() {
-    pagination.reset();
+pagination.reset(); 
 localStorage.setItem('isLibrary', JSON.stringify(true));
 
   watchedLibrary = JSON.parse(localStorage.getItem('watched')) || []
   queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
 
 if (watchedLibrary.length === 0 && queueLibrary.length === 0){
- 
-    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
+   pagination.reset();
+   Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.classList.add('picture');
     refs.gallery.innerHTML = '';
-    tui.classList.add('is-hidden')
+    
 }  
 else {
     library = [...watchedLibrary, ...queueLibrary];
   refs.gallery.innerHTML = '';
   refs.gallery.classList.remove('picture');
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
-  
-  
-
+  const li =  document.querySelectorAll('.gallery-item');
+  movieButtons(li, library);
+   
   }
     
   
