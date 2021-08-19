@@ -122,12 +122,15 @@ function renderWatchedMarkup(list) {
     refs.gallery.innerHTML = '';
     refs.gallery.classList.add('picture');
     
-    // tui.classList.add('is-hidden')
+    tui.classList.add('is-hidden')
 
     return
   } 
  
-   
+  if (tui.classList.contains('is-hidden')) {
+    tui.classList.remove('is-hidden');
+  }
+  
   refs.gallery.innerHTML = ''
   
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
@@ -143,19 +146,24 @@ function renderQueueMarkup(list) {
   localStorage.setItem('isQueue', JSON.stringify(true));
   localStorage.setItem('isWatched', JSON.stringify(false));
   list = JSON.parse(localStorage.getItem('queue')) || []
-  if (list.length === 0){
-   pagination.reset();
 
+  if (list.length === 0){
+ 
+    tui.classList.add('is-hidden')
+    
       Notiflix.Notify.failure('Sorry, there are no films at your queue yet. Want to add some?');
       refs.gallery.innerHTML = '';
       refs.gallery.classList.add('picture');
-    tui.classList.add('is-hidden')
+    
     return
 
   }
- 
+
+    if (tui.classList.contains('is-hidden')) {
+    tui.classList.remove('is-hidden');
+  }
   refs.gallery.innerHTML = ''
-  //  pagination.reset();
+   pagination.reset();
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
   const li =  document.querySelectorAll('.gallery-item');
   movieButtons(li, list);
@@ -267,11 +275,10 @@ localStorage.setItem('isLibrary', JSON.stringify(true));
   queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
 
 if (watchedLibrary.length === 0 && queueLibrary.length === 0){
-   pagination.reset();
    Notiflix.Notify.failure('Sorry, there are no films at your library yet. Want to add some?');
     refs.gallery.classList.add('picture');
     refs.gallery.innerHTML = '';
-    
+    tui.classList.add('is-hidden');
 }  
 else {
     library = [...watchedLibrary, ...queueLibrary];
@@ -317,6 +324,5 @@ queueLibrary = JSON.parse(localStorage.getItem('queue')) || []
 library = [...watchedLibrary, ...queueLibrary];
 refs.gallery.innerHTML = '';
 refs.gallery.insertAdjacentHTML('beforeend', moviesCard(library));
-
 
 }
