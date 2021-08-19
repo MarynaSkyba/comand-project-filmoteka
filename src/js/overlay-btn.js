@@ -7,8 +7,7 @@ export default function movieButtons(li, response) {
     for (let index = 0; index < li.length; ++index) {
       let el = li[index];
       let movie = response[index];
-      console.log(el)
-      console.log(movie)
+    
 
       el.addEventListener("mouseenter", (e) => {
         let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
@@ -18,14 +17,14 @@ export default function movieButtons(li, response) {
     
      
         if (checkFilm(watchedInLocalstorage, movie)) {
-            watchedBtnText = "remove from Watched";
+            watchedBtnText = "delete from Watched";
 
           } else if (!checkFilm(watchedInLocalstorage, movie)) {
             watchedBtnText = "add to Watched";
           } 
     
           if (checkFilm(queueInLocalstorage, movie)) {
-            queueBtnText = "remove from queue";
+            queueBtnText = "delete from queue";
           } else if (!checkFilm(queueInLocalstorage, movie)) {
             queueBtnText = "add to queue";
           }            
@@ -60,7 +59,7 @@ export default function movieButtons(li, response) {
   export function checkFilm(filmArr, film) {
     if (!filmArr) return false;
     
-    return filmArr.find((item) => item.id === film.id)
+    return filmArr.some((item) => item.id === film.id)
     
   }
 
