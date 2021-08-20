@@ -1,5 +1,5 @@
 import Notiflix from "notiflix";
-
+import {updateWatchedPage, updateQueuePage} from './NEWmodal';
 
 export default function movieButtons(li, response) {
 
@@ -72,7 +72,7 @@ function overlayWatchedHandler(data, watchBtn, queueBtn) {
       if (!queueInLocalstorage) queueInLocalstorage = [];
   
       if (checkFilm(queueInLocalstorage, data)) {
-          queueBtn.textContent = "remove from queue";
+          queueBtn.textContent = "delete from queue";
       } else {
           queueBtn.textContent = "add to queue";
         } 
@@ -89,7 +89,7 @@ function overlayQueueHandler(response, watchBtn, queueBtn) {
       if (!watchedInLocalstorage) watchedInLocalstorage = [];
   
       if (checkFilm(watchedInLocalstorage, response)) {
-          watchBtn.textContent = "remove from watched";
+          watchBtn.textContent = "delete from watched";
         } else
 
           watchBtn.textContent = "add to watched";
@@ -129,6 +129,7 @@ function overlayQueueHandler(response, watchBtn, queueBtn) {
         btn.textContent = "add to Watched";
         localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
         Notiflix.Notify.success('The movie was successfully deleted from the library');
+        updateWatchedPage();
       }
     };
   }
@@ -167,11 +168,16 @@ function overlayQueueHandler(response, watchBtn, queueBtn) {
             queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
           }
         });
+      
           btn.textContent = "add to queue";
           localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
           Notiflix.Notify.success('The movie was successfully deleted from the library');
+          updateQueuePage();
       }
     };
   }
+
+
+
 
 

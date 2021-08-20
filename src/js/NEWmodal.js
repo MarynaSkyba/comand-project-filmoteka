@@ -167,6 +167,8 @@ function renderQueueMarkup(list) {
   refs.gallery.insertAdjacentHTML('beforeend', moviesCard(list))
   const li =  document.querySelectorAll('.gallery-item');
   movieButtons(li, list);
+ 
+ 
   refs.gallery.classList.remove('picture');
 }
 
@@ -294,7 +296,7 @@ else {
 }
 
 
-function updateWatchedPage() {
+export function updateWatchedPage() {
   if (JSON.parse(localStorage.getItem('isWatched')) === true && JSON.parse(localStorage.getItem('isLibrary')) ===true && JSON.parse(localStorage.getItem('isQueue')) ===false) {
     renderWatchedMarkup()
  
@@ -307,7 +309,7 @@ function updateWatchedPage() {
          
 }
 
-function updateQueuePage() {
+export function updateQueuePage() {
   if (JSON.parse(localStorage.getItem('isQueue')) === true && JSON.parse(localStorage.getItem('isLibrary')) ===true && JSON.parse(localStorage.getItem('isWatched')) ===false) {
     renderQueueMarkup()
 
