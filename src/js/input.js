@@ -46,21 +46,19 @@ refs.searchForm.addEventListener('submit', onSearch);
  
 async function onSearch(e) {
   e.preventDefault();
-  spinner.spin(target);
+  
   filmsApiService.query = e.currentTarget.elements.searchQuery.value;
 
-  try{
+    try{
     
     if (filmsApiService.query.trim() === '') {
-    filmsApiService.fetchDate(page).then(response => {
-    renderMovieCards(response);
-       spinner.stop();
- });
-      spinner.stop();
-      clearInput();
+      refs.searchForm.disabled = true;
     Notiflix.Notify.failure('Oops, there are no movies with that name');
     return;
     } else {
+      spinner.spin(target);
+      refs.searchForm.disabled = true;
+      spinner.spin(target);
   const result = await filmsApiService.fetchSearch();
   clearInput()
   paginationInput.reset(result[1].total_pages);
@@ -73,7 +71,8 @@ async function onSearch(e) {
   catch(error) {
     console.log(error)
   }
- 
+  paginationInput.reset();
+      spinner.stop();
 }
 
 paginationInput.on('afterMove', (event) => {
