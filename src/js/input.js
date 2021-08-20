@@ -50,8 +50,8 @@ async function onSearch(e) {
   filmsApiService.query = e.currentTarget.elements.searchQuery.value;
 
     try{
-    
-    if (filmsApiService.query.trim() === '') {
+      const result = await filmsApiService.fetchSearch();
+    if (filmsApiService.query.trim() === '' || result.length === 0) {
       refs.searchForm.disabled = true;
     Notiflix.Notify.failure('Oops, there are no movies with that name');
     return;
@@ -59,7 +59,7 @@ async function onSearch(e) {
       spinner.spin(target);
       refs.searchForm.disabled = true;
       spinner.spin(target);
-  const result = await filmsApiService.fetchSearch();
+  // const result = await filmsApiService.fetchSearch();
   clearInput()
   paginationInput.reset(result[1].total_pages);
       renderMovieCards(result);
@@ -69,7 +69,7 @@ async function onSearch(e) {
   }}
   
   catch(error) {
-    console.log(error)
+    Notiflix.Notify.failure('Oops, something goes wrong');
   }
   paginationInput.reset();
       spinner.stop();
@@ -78,7 +78,6 @@ async function onSearch(e) {
 paginationInput.on('afterMove', (event) => {
   const currentPage = event.page;
   const query = refs.searchForm.searchQuery.value;
-  console.log(query);
   filmsApiService.fetchSearch(currentPage).then(results => {
       clearInput()
         renderMovieCards(results);

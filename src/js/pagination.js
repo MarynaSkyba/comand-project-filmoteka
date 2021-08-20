@@ -62,7 +62,7 @@ queryService.fetchDate(page).then(response => {
     renderMoveGallery(response);
     const li =  document.querySelectorAll('.gallery-item');
     movieButtons(li, response);
-    console.log(response);
+    // console.log(response);
     spinner.stop();
  });
 
