@@ -3,11 +3,18 @@
     <div class='photo-card'>
 
       <div class='thumb'>
-        <img
-          src='https://www.themoviedb.org/t/p/w300{{poster_path}}'
-          loading='lazy'
-          data-movie-id='{{id}}'
-        />
+
+
+          {{#if poster_path}}
+            <img  class="image-thumb"
+            src='https://www.themoviedb.org/t/p/w300{{poster_path}}' loading='lazy' data-movie-id='{{id}}' />
+          {{else}}
+          <img  class="image-thumb" src="https://sd.keepcalms.com/i-w600/sorry-no-picture-available-2.jpg" loading='lazy' data-movie-id='{{id}}' alt="no-image-available-400x265" >
+
+         
+          {{/if}}
+          </div>
+     
       </div>
       <!--  <p class="title">
             {{title}}
