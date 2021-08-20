@@ -3,12 +3,12 @@ iframe {
   height: 200px;
 
   @media screen and (min-width: $tablet) {
-    width: 450px;
-    height: 300px;    
+    width: 620px;
+    height: 570px;
   }
 
   @media screen and (min-width: $desktop) {
-    width: 600px;
-    height: 360px;    
+    width: 900px;
+    height: 600px;   
   }
 }
